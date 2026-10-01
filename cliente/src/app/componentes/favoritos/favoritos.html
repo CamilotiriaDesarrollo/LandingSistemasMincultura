@@ -1,0 +1,30 @@
+<div class="portada-cabeza">
+  <span class="eyebrow">ACCESOS FAVORITOS</span>
+  <h2 id="favoritos-titulo">Empieza por aquí</h2>
+</div>
+
+<!-- Los tres atributos y las dos variables son lo que ajusta la rejilla al número de
+     favoritos que devuelva el API. Las cifras van DESPUÉS de las tarjetas, como en el
+     prototipo, y son hijas directas del bento por el display:contents de .cifras. -->
+<div appResplandor class="bento" id="bento"
+     [attr.data-favoritos]="favoritos().length" [attr.data-otros]="otros()"
+     [style.--filas]="filas()" [style.--filas-m]="filasM()">
+  @for (p of favoritos(); track p.name; let i = $index) {
+    <a [appMarca]="p.name" [class]="clase(i)"
+       [style.--fondo]="tono(i)?.fondo" [style.--tinta]="tono(i)?.tinta" [style.--fila]="i || null"
+       [href]="p.url" target="_blank" rel="noopener noreferrer"
+       [attr.aria-label]="'Abrir ' + p.name + ' en una pestaña nueva'"
+       [attr.aria-describedby]="'fd-' + clave(p) + ' fm-' + clave(p)">
+      @if (i === 0) {
+        <span class="fav-marca" aria-hidden="true">{{ numero(i) }}</span>
+      } @else {
+        <b class="fav-flecha" aria-hidden="true">↗</b>
+      }
+      <span class="fav-eyebrow">Favorito {{ numero(i) }}<span class="fav-tema">@if (p.tema; as tema) {<span class="fav-sep"> · </span>{{ tema.name }}}</span></span>
+      <strong class="fav-nombre">{{ p.name }}</strong>
+      <span class="fav-desc" [id]="'fd-' + clave(p)">{{ p.desc }}</span>
+      <span class="fav-pie">@if (i === 0) {<span class="fav-abrir">Abrir portal <b aria-hidden="true">↗</b></span>}<span class="fav-dominio" [id]="'fm-' + clave(p)">@for (trozo of trozosDominio(p.dominio); track $index; let ultimo = $last) {{{ trozo }}@if (!ultimo) {.<wbr>}}</span></span>
+    </a>
+  }
+  <div app-cifras class="cifras"></div>
+</div>

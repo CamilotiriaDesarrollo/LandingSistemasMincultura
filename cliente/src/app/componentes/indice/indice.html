@@ -1,0 +1,12 @@
+<ul #barra>
+  @for (e of enlaces(); track e.id) {
+    <li>
+      <a
+        [href]="'#tema-' + e.id"
+        [attr.data-tema]="e.id"
+        [attr.aria-current]="e.actual ? 'location' : null"
+        [style.--tinta]="e.tinta"
+      >{{ e.short }} <b>{{ e.n }}</b><span class="solo-lector"> {{ e.n === 1 ? 'portal' : 'portales' }}, tema {{ e.name }}</span></a>
+    </li>
+  }
+</ul>

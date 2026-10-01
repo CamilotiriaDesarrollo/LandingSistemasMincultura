@@ -1,0 +1,17 @@
+# Cliente
+cliente/node_modules/
+cliente/.angular/
+cliente/dist/
+
+# Servidor
+servidor/bin/
+servidor/obj/
+# el cliente compilado se genera con ng build
+servidor/wwwroot/
+
+# Publicación y registros
+publicacion/
+*.log
+
+# Banco de medicion tactil (Python)
+__pycache__/

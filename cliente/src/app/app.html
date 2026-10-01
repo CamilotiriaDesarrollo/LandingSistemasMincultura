@@ -1,0 +1,33 @@
+<header app-encabezado class="brandbar"></header>
+
+<div app-accesibilidad class="accessibility" aria-label="Accesibilidad"></div>
+
+<main id="inicio">
+  <div class="wrap breadcrumb">Inicio / Portales y sistemas de información</div>
+
+  <!-- Dentro de <main> a propósito: su position:absolute se resuelve contra
+       main{position:relative} y su left lo alinea con el ancho del .wrap. -->
+  <a class="saltar" href="#explorar">Ir a los portales</a>
+
+  <section app-portada class="hero wrap" aria-labelledby="page-title"></section>
+
+  <section app-explorador class="wrap explorar" id="explorar" aria-labelledby="explorar-titulo"></section>
+
+  <!-- La clase .portada es la sección de accesos favoritos, no el hero. El nombre
+       no coincide con el del componente y se conserva igual, por fidelidad al CSS.
+       Va al final a propósito: el buscador lleva directo al mosaico, sin que los
+       favoritos se interpongan entre los dos. -->
+  <section app-favoritos class="wrap portada" aria-labelledby="favoritos-titulo"></section>
+</main>
+
+<footer app-pie class="footer"></footer>
+
+<!-- Zócalo táctil, solo cuando no hay puntero fino: buscador, conmutador de vistas y
+     acceso a los temas al alcance del pulgar.
+
+     Va al final del body a propósito, y por dos razones. La primera es el recorrido con
+     Tab: es lo último de la página y es lo último que se enfoca. La segunda es la reserva
+     de su alto: el zócalo se pega abajo desde el flujo, así que su propia caja es la que
+     reserva el sitio al final del documento, con cualquier ampliación de letra y con
+     cualquier plegado de sus botones. Con ratón el componente no pinta nada. -->
+<div app-zocalo class="zocalo" role="group" aria-label="Accesos rápidos"></div>

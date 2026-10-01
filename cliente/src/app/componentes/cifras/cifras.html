@@ -1,0 +1,30 @@
+<div class="kpi kpi-portales">
+  <p class="kpi-etiqueta" aria-hidden="true">EN ESTE DIRECTORIO</p>
+  <!-- El número no se interpola: lo pinta counter(n) sobre la variable --n que anima la
+       directiva, y por eso tiene que salir en cero y cambiar después. -->
+  <p class="kpi-cifra"><span class="kpi-grande" id="cifra-portales" [appNumero]="portales()"
+      aria-hidden="true"></span><span class="kpi-texto" id="cifra-portales-texto"
+      aria-hidden="true">{{ textoPortales() }}</span><span class="solo-lector"
+      id="cifra-portales-lector">{{ lectorPortales() }}</span></p>
+</div>
+
+<div class="kpi kpi-temas">
+  <p class="kpi-titulo"><span class="kpi-medio" id="cifra-temas" [appNumero]="temasConPortales()"
+      aria-hidden="true"></span><span id="cifra-temas-texto"
+      aria-hidden="true">{{ textoTemas() }}</span><span class="solo-lector"
+      id="cifra-temas-lector">{{ lectorTemas() }}</span></p>
+
+  <div class="barra" id="barra" aria-hidden="true">
+    @for (t of tramos(); track t.id) {
+      <span class="tramo" [class.rayado]="t.rayado" [class.cero]="t.cero" [attr.data-tema]="t.id"
+            [style.--tinta]="t.tinta" [style.--c]="t.c"></span>
+    }
+  </div>
+
+  <ul class="leyenda" id="leyenda" aria-label="Portales por tema">
+    @for (l of leyenda(); track l.id) {
+      <li [attr.data-tema]="l.id"><i class="muestra" [class.rayado]="l.rayado" [style.--tinta]="l.tinta"
+          aria-hidden="true"></i><span>{{ l.short }}</span> <b>{{ l.texto }}</b></li>
+    }
+  </ul>
+</div>

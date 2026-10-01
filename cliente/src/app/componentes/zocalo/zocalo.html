@@ -1,0 +1,20 @@
+<!-- Sin puntero fino no hay nada que pintar: con ratón el anfitrión queda vacío y el
+     censo de escritorio no ve un solo objetivo nuevo. -->
+@if (!store.conPuntero()) {
+  <!-- aria-label además del texto visible: el nombre accesible no puede depender de que
+       la hoja conserve el rótulo en las pantallas más angostas. Cada uno contiene la
+       palabra que se ve, que es lo que pide «rótulo en el nombre». -->
+  <button type="button" class="zocalo-boton" data-zocalo="buscador" aria-label="Ir al buscador"
+          (click)="irAlBuscador()"><span class="zocalo-texto">Buscar</span></button>
+
+  <div class="zocalo-vistas" data-zocalo="vistas" role="group" aria-label="Forma de ver los portales">
+    @for (v of VISTAS; track v) {
+      <button type="button" class="zocalo-boton" [attr.data-vista]="v" [attr.aria-label]="ETIQUETAS[v]"
+              [attr.aria-pressed]="v === store.vistaEfectiva()" (click)="store.cambiarVista(v)"
+      ><i [class]="'icono icono-' + v" aria-hidden="true"></i><span class="zocalo-texto">{{ ETIQUETAS[v] }}</span></button>
+    }
+  </div>
+
+  <button type="button" class="zocalo-boton" data-zocalo="temas" aria-label="Ir a los temas"
+          (click)="irATemas()"><span class="zocalo-texto">Temas</span></button>
+}

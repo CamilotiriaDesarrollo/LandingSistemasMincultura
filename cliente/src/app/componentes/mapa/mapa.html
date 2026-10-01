@@ -1,0 +1,259 @@
+<!-- Las cinco medidas son obligatorias: sin --alto, height:var(--alto) es declaración inválida
+     y el mapa colapsa. Los seis manejadores son delegados y leen data-i y data-tema. -->
+<nav
+  #lienzo
+  class="mapa-lienzo"
+  id="mapa-lienzo"
+  aria-label="Mapa de portales por tema"
+  [style.--alto]="geo().alto + 'px'"
+  [style.--fila]="geo().fila + 'px'"
+  [style.--cab]="geo().conf.cab + 'px'"
+  [style.--sep]="geo().conf.sep + 'px'"
+  [style.--ancho-centro]="geo().conf.ancho + 'px'"
+  (pointermove)="alPunteroSeMueve($event)"
+  (pointerout)="alPunteroSaleDelMapa($event)"
+  (focusin)="alFocoEntraEnMapa($event)"
+  (focusout)="alFocoSaleDelMapa($event)"
+  (click)="alPulsarEnMapa($event)"
+  (keydown)="alTeclearMapa($event)"
+>
+  <!-- Exactamente tres hijos directos y en este orden: .mapa-lienzo es una grilla de
+       minmax(0,1fr) var(--ancho-centro) minmax(0,1fr) y el .rosa va en medio. -->
+  <ng-container
+    [ngTemplateOutlet]="columna"
+    [ngTemplateOutletContext]="{ $implicit: geo().columnas[0] }"
+  ></ng-container>
+
+  <div class="rosa" aria-hidden="true">
+    <!-- Las dos clases de estado van en el SVG, no en el contenedor. Cinco grupos en este
+         orden, que es el orden de pintado. -->
+    <svg
+      class="rosa-svg"
+      id="rosa-svg"
+      focusable="false"
+      [attr.width]="caja().ancho"
+      [attr.height]="caja().alto"
+      [attr.viewBox]="caja().viewBox"
+      [class.hay-foco]="portalEnFoco() >= 0"
+      [class.hay-consulta]="store.hayConsultaMarca()"
+      [style.--giro]="giro() + 'deg'"
+    >
+      <g>
+        <circle
+          class="orbita orbita--a"
+          [attr.cx]="geo().cx"
+          [attr.cy]="geo().cy"
+          [attr.r]="geo().conf.orbitas[0]"
+        />
+        <circle
+          class="orbita orbita--b"
+          [attr.cx]="geo().cx"
+          [attr.cy]="geo().cy"
+          [attr.r]="geo().conf.orbitas[1]"
+        />
+      </g>
+      <g>
+        @for (p of puntos(); track p.i) {
+          <path
+            class="linea"
+            [attr.data-i]="p.i"
+            [attr.d]="p.d"
+            [class.is-foco]="esFoco(p.i)"
+            [class.is-coincide]="puntoCoincide(p.i)"
+            [class.is-tema]="lineaDeTema(p.i)"
+          />
+        }
+      </g>
+      <g>
+        @for (a of arcos(); track a.id) {
+          <g
+            class="arco"
+            [class.arco--solido]="a.solido"
+            [class.arco--claro]="!a.solido"
+            [class.is-fijo]="store.temaActivo() === a.id"
+            [class.is-hover]="temaEnFoco() === a.id && store.temaActivo() !== a.id"
+            [class.is-apagado]="arcoApagado(a.id)"
+            [attr.data-tema]="a.id"
+            [style.--ux]="a.ux"
+            [style.--uy]="a.uy"
+            [style.--c]="a.color"
+          >
+            <path [attr.d]="a.d" />
+            <text [attr.x]="a.x" [attr.y]="a.y">{{ a.numero }}</text>
+          </g>
+        }
+      </g>
+      <g>
+        @for (p of puntos(); track p.i) {
+          <g
+            class="punto"
+            [class.punto--fav]="p.fav"
+            [class.is-foco]="esFoco(p.i)"
+            [class.is-coincide]="puntoCoincide(p.i)"
+            [class.is-apagado]="puntoApagado(p.i)"
+            [attr.data-i]="p.i"
+          >
+            <circle class="punto-halo" [attr.cx]="p.cx" [attr.cy]="p.cy" r="12" />
+            @if (p.fav) {
+              <circle class="punto-anillo" [attr.cx]="p.cx" [attr.cy]="p.cy" r="8.5" />
+            }
+            <circle class="punto-nucleo" [attr.cx]="p.cx" [attr.cy]="p.cy" r="5" />
+          </g>
+        }
+      </g>
+      <!-- Dos referencias distintas y dos consultas: el mismo nombre dos veces en la misma
+           vista no se puede declarar. El orden del arreglo sigue siendo el del DOM, así que
+           la posición se resuelve con posDe. -->
+      <g>
+        @for (p of puntos(); track p.i) {
+          <path #hazCola class="haz haz--cola" [attr.data-i]="p.i" [attr.d]="p.d" />
+          <path #hazCabeza class="haz haz--cabeza" [attr.data-i]="p.i" [attr.d]="p.d" />
+        }
+      </g>
+    </svg>
+
+    <div
+      class="centro"
+      [style.left]="centroCaja().left"
+      [style.top]="centroCaja().top"
+      [style.width]="centroCaja().lado"
+      [style.height]="centroCaja().lado"
+    >
+      @if (claveCentro() === 'cuenta') {
+        <div class="centro-cuenta" id="centro-cuenta">
+          <strong id="centro-num">{{ numeroMostrado() }}</strong>
+          <span class="centro-linea" id="centro-linea">{{ lineaCentro() }}</span>
+          <span class="centro-sub" id="centro-sub">{{ subCentro() }}</span>
+        </div>
+      } @else if (fichaCentro(); as f) {
+        <div class="centro-ficha" id="centro-ficha">
+          <span class="c-tema">{{ f.tema }}</span>
+          @if (f.portal) {
+            <strong class="c-nombre"
+              ><span app-resaltado [texto]="f.nombre" [consulta]="store.consultaMarca()"></span
+            ></strong>
+          } @else {
+            <strong class="c-nombre">{{ f.nombre }}</strong>
+          }
+          <span class="c-desc">{{ f.desc }}</span>
+          @if (f.dominio) {
+            <span class="c-dominio">{{ f.dominio }}</span>
+          }
+          <span class="c-pie">{{ f.pie }}</span>
+        </div>
+      }
+    </div>
+
+    <p class="rosa-leyenda">
+      <span>★</span> Favorito · El tamaño de cada arco depende de cuántos portales tiene
+    </p>
+  </div>
+
+  <ng-container
+    [ngTemplateOutlet]="columna"
+    [ngTemplateOutletContext]="{ $implicit: geo().columnas[1] }"
+  ></ng-container>
+</nav>
+
+<!-- Los destinos de los aria-describedby, y la accesibilidad del mapa: el SVG es decorativo.
+     Salen del estado sin búsqueda, así que existen para todos los portales siempre. -->
+<div hidden id="mapa-descripciones">
+  @for (g of temasBase(); track g.t.id) {
+    <span [id]="'t-desc-' + g.t.id">{{ g.t.desc }}</span>
+    @for (f of g.filas; track f.i) {
+      <span [id]="'m-desc-' + f.i"
+        >@if (f.p.favorito) {Favorito. }{{ g.t.name }}. {{ f.p.desc }} Sitio {{ f.p.dominio }}.</span
+      >
+    }
+  }
+</div>
+
+<!-- Las dos columnas comparten plantilla y la segunda puede quedar vacía. El ng-template no
+     pinta nada, así que .mapa-lienzo conserva sus tres hijos directos. -->
+<ng-template #columna let-col>
+  <div
+    class="mapa-col"
+    [class.mapa-col--izq]="col.lado === 'izq'"
+    [class.mapa-col--der]="col.lado === 'der'"
+    [style.padding-top]="col.offset + 'px'"
+  >
+    @for (id of col.temas; track id) {
+      @if (grupos().get(id); as g) {
+        <!-- Los .grupo son hermanos directos de su .mapa-col: .grupo + .grupo lleva el margen. -->
+        <section
+          class="grupo"
+          [class.is-fijo]="store.temaActivo() === id"
+          [attr.data-tema]="id"
+          [attr.aria-labelledby]="'cab-' + id"
+        >
+          <h3>
+            <button
+              type="button"
+              class="cabecera"
+              [class.is-foco]="temaEnFoco() === id"
+              [id]="'cab-' + id"
+              [attr.data-tema]="id"
+              [attr.aria-pressed]="store.temaActivo() === id"
+              [attr.aria-describedby]="'t-desc-' + id"
+            >
+              <span
+                class="mapa-num"
+                [class.mapa-num--solido]="g.solido"
+                [class.mapa-num--claro]="!g.solido"
+                [style.--c]="g.color"
+                >{{ g.t.numero }}</span
+              >
+              <span class="cab-nombre">{{ g.t.name }}</span>
+              <span class="cab-cuenta" data-cuenta>
+                @if (!store.hayConsultaMarca()) {
+                  {{ plural(g.t.total, 'portal', 'portales') }}
+                } @else if (g.t.coincidencias) {
+                  {{ g.t.coincidencias }} de {{ g.t.total }}
+                } @else {
+                  <span class="sin">Sin coincidencias</span><span>0 de {{ g.t.total }}</span>
+                }
+              </span>
+            </button>
+          </h3>
+          <ul class="filas">
+            @for (f of g.filas; track f.i) {
+              <!-- El inert es obligatorio: alTeclearMapa filtra por [inert], y ocultar la fila
+                   o quitarla del @for perdería el mapa fijo, que es el punto de la vista. -->
+              <li
+                #filaItem
+                class="mapa-fila-item"
+                [class.is-apagado]="apagado(f.p)"
+                [class.is-foco]="esFoco(f.i)"
+                [attr.inert]="apagado(f.p) ? '' : null"
+                [attr.data-i]="f.i"
+              >
+                <a
+                  class="mapa-fila"
+                  [attr.data-i]="f.i"
+                  [href]="f.p.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="'Abrir ' + f.p.name + ' en una pestaña nueva'"
+                  [attr.aria-describedby]="'m-desc-' + f.i"
+                >
+                  @if (f.p.favorito) {
+                    <span class="estrella" aria-hidden="true">★</span>
+                  }
+                  <span
+                    #nombre
+                    app-resaltado
+                    class="nombre"
+                    [texto]="f.p.name"
+                    [consulta]="store.consultaMarca()"
+                  ></span>
+                  <span class="guia" aria-hidden="true"></span>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    }
+  </div>
+</ng-template>

@@ -1,0 +1,24 @@
+@for (t of temas(); track t.id) {
+  <section class="lista-tema" [attr.aria-labelledby]="'lh-' + t.id" [style.--tinta]="tinta(t)">
+    <h3 [id]="'lh-' + t.id"><span class="lista-num" aria-hidden="true">{{ dosDigitos(cuentaDe(t)) }}</span>{{ t.name }}<span class="lista-cuenta"><span class="solo-lector">, </span>{{ texto(t) }}</span></h3>
+    <ul>
+      @for (p of filasDe(t); track clave(p)) {
+        <li>
+          <a
+            class="fila"
+            [href]="p.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'Abrir ' + p.name + ' en una pestaña nueva'"
+            [attr.aria-describedby]="'ld-' + clave(p) + ' lm-' + clave(p)"
+          >
+            <strong><span app-resaltado [texto]="p.name" [consulta]="store.consultaMarca()"></span></strong>
+            <span app-resaltado class="fila-desc" [id]="'ld-' + clave(p)" [texto]="p.desc" [consulta]="store.consultaMarca()"></span>
+            <span class="fila-dominio" [id]="'lm-' + clave(p)">{{ p.dominio }}</span>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </li>
+      }
+    </ul>
+  </section>
+}

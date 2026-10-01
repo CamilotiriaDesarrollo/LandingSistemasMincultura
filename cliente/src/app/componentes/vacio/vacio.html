@@ -1,0 +1,14 @@
+<span class="vacio-num" aria-hidden="true">00</span>
+<div>
+  <h3>No encontramos portales con «{{ consulta() }}».</h3>
+  <p>Prueba con otra palabra.</p>
+  @if (store.sugerencias().length) {
+    <p class="kpi-etiqueta" id="vacio-sugerencias">PALABRAS CON RESULTADOS</p>
+    <div class="vacio-sugerencias" role="group" aria-labelledby="vacio-sugerencias">
+      @for (s of store.sugerencias(); track s) {
+        <button type="button" class="ficha" [attr.data-termino]="s" (click)="buscar(s)">{{ s }}</button>
+      }
+    </div>
+  }
+  <button type="button" class="boton-todos" data-accion="todos" (click)="verTodos()">Ver los {{ store.total() }} portales</button>
+</div>

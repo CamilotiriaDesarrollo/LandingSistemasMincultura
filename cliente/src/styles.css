@@ -1,0 +1,1217 @@
+/* Estilos de la landing de portales. Una sola hoja, dos mitades y en este orden:
+   la base institucional (copia de propuestas/_recursos/institucional.css, con las
+   rutas de fuente absolutas) y debajo el bloque de propuesta-c-unificada.html.
+   Invertir el orden pierde tres colores de contraste. Los colores viven en :root. */
+
+
+@font-face{font-family:RobotoC;src:url('/fuentes/roboto-condensed-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:RobotoC;src:url('/fuentes/roboto-condensed-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:RobotoC;src:url('/fuentes/roboto-condensed-900.woff2') format('woff2');font-weight:900;font-display:swap}
+:root{--purple:#4b3c8c;--deep:#2e286e;--accent:#4938c9;--lav:#efeeff;--muted:#7772a6;--line:#d7d1f4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--lav);color:var(--deep);font-family:RobotoC,Arial,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #f7be37;outline-offset:3px}
+.wrap{width:min(1240px,calc(100% - 48px));margin:auto}
+.brandbar{background:var(--purple);color:#fff}
+.brandbar .top{height:75px;display:flex;align-items:center;gap:25px}
+.official-logo{width:156px;height:auto;display:block}
+.ministry{font-size:11px;line-height:1.3;color:#e9e5f7}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:17px;font-size:12px}
+.header-search{background:#fff;border:0;color:var(--purple);border-radius:20px;padding:10px 19px;font-weight:700}
+.nav{border-top:1px solid #ffffff2c}
+.nav .wrap{height:42px;display:flex;justify-content:center;align-items:center;gap:29px;font-weight:700;font-size:12px}
+.nav a:hover{text-decoration:underline}
+.mobile-nav{display:none}
+.breadcrumb{font-size:11px;color:#8176b5;padding-top:22px}
+.eyebrow{font-size:11px;letter-spacing:.13em;font-weight:900;color:#6c5eb5}
+/* El piso del clamp es el mismo 32px que fija el móvil: con uno menor, el título se
+   encogía al pasar de 700 px en vez de crecer. */
+.hero h1{font-size:clamp(32px,3vw,42px);line-height:1.1;letter-spacing:-.045em;margin:10px 0;color:#302971;font-weight:900}
+.search{background:#fff;border:1px solid #cdc5ed;border-radius:15px;padding:0 18px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 25px #342b830e}
+.search input{width:100%;min-width:0;border:0;outline:0;padding:18px 0;color:var(--deep);background:transparent}
+.search input::placeholder{color:#9189b5}
+.search .lens{width:16px;height:16px;border:2px solid #5845b3;border-radius:50%;position:relative;flex:none}
+.search .lens:after{content:'';position:absolute;width:9px;height:2px;background:#5845b3;transform:rotate(45deg);right:-7px;bottom:-4px}
+.accessibility{position:fixed;right:0;top:34%;z-index:10;background:var(--purple);padding:8px 6px;border-radius:12px 0 0 12px;display:grid;gap:7px;box-shadow:0 8px 20px #2c236950}
+.accessibility button{border:0;border-radius:6px;background:#fff;color:var(--purple);width:31px;height:32px;font-weight:900}
+.accessibility button:hover{background:#e7e2ff}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:36px 0 18px}
+.section-head h2{font-size:30px;letter-spacing:-.035em;margin:0;font-weight:900}
+.section-head p{font-size:13px;color:var(--muted);max-width:380px;margin:0;line-height:1.4}
+.portal{display:block;background:#fff;border:1px solid #ded8f4;border-radius:14px;padding:17px;position:relative;min-height:100px;transition:box-shadow .15s,transform .15s}
+.portal:hover{box-shadow:0 9px 23px #35258919;transform:translateY(-2px)}
+.portal strong{font-weight:900;color:#3a2e96;font-size:17px;line-height:1.2;display:block;padding-right:22px}
+.portal span{display:block;color:#77728d;font-size:12px;line-height:1.4;margin-top:7px}
+.portal b{position:absolute;right:17px;top:13px;font-size:20px;color:#503bd0;font-weight:400}
+.footer{margin-top:65px;background:var(--purple);color:#eeebfc;padding:29px 0}
+.footer .wrap{display:flex;justify-content:space-between;gap:20px;font-size:12px;line-height:1.5}
+.footer strong{font-size:14px}
+body.high-contrast{--lav:#fff;--deep:#151050;--line:#392686}
+body.high-contrast .portal,body.high-contrast .search{border-color:#392686}
+@media(max-width:700px){.wrap{width:min(100% - 34px,500px)}
+.brandbar .top{height:64px}
+.official-logo{width:135px}
+.ministry,.header-actions,.nav{display:none}
+.mobile-nav{display:block;margin-left:auto;background:none;border:1px solid #aea4d8;border-radius:8px;color:#fff;padding:8px 12px;font-size:12px}
+.breadcrumb{padding-top:17px}
+.hero h1{font-size:32px}
+.search input{font-size:13px;padding:15px 0}
+.section-head{display:block;margin:29px 0 14px}
+.section-head h2{font-size:25px}
+.section-head p{margin-top:7px;font-size:12px}
+.portal{min-height:83px;padding:15px}
+.portal strong{font-size:15px}
+.portal span{font-size:11px}
+.accessibility{right:7px;top:auto;bottom:8px;display:flex;border-radius:10px;padding:4px;gap:3px}
+.accessibility button{width:30px;height:31px;font-size:12px}
+.footer .wrap{display:block}
+.footer p{margin:8px 0 0}
+}
+
+.hero{padding:18px 0 16px}
+@media(max-width:700px){
+ .hero{padding:14px 0 10px}
+}
+
+/* ===== Desde aqui, el <style> de propuestas/propuesta-c-unificada.html (L39-584),
+   apendizado sin reordenar. Va al final a proposito: .breadcrumb y .section-head p
+   repiten selectores de la base con la misma especificidad y solo ganan por orden
+   de aparicion. ===== */
+/* AJUSTE DE CONTRASTE PENDIENTE DE VISTO BUENO */
+/* Las migas (#8176b5) dan 3,53:1 sobre --lav. Se pasan a var(--purple), de la misma
+   familia violeta, que da 7,89:1. El hero ya no lleva subtítulo: el ajuste que tenía
+   (#746ba9 a 4,15:1) se fue con él. */
+.breadcrumb{color:var(--purple)}
+/* Fin del ajuste de contraste */
+
+/* ===== Base de la propuesta ===== */
+@property --n{syntax:'<integer>';inherits:false;initial-value:0}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+:root{--curva:cubic-bezier(.22,1,.36,1)}
+[hidden]{display:none!important}
+main{position:relative}
+.solo-lector{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* --muted no se usa en texto pequeño */
+.section-head p{color:var(--purple)}
+mark{background:#dcd8fb;color:var(--deep);box-shadow:inset 0 -2px 0 var(--accent);border-radius:2px;padding:0 1px}
+.num{counter-reset:n var(--n);transition:--n .9s var(--curva)}
+.num::before{content:counter(n)}
+.numeros-quietos .num{transition:none!important}
+
+/* Enlace para saltar a los portales */
+.saltar{position:absolute;z-index:30;left:max(24px,calc((100% - 1240px) / 2));top:8px;background:var(--deep);color:#fff;font-size:13px;font-weight:700;padding:10px 16px;border-radius:10px;transform:translateY(-180%);opacity:0}
+.saltar:focus{transform:none;opacity:1}
+
+/* ===== Buscador: al principio del explorador, que es quien lo usa ===== */
+.buscador{margin-bottom:28px}
+.buscador .search{position:relative;max-width:720px;transition:border-color .2s,box-shadow .2s}
+.search:focus-within{border-color:var(--accent);box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 14%,transparent)}
+.search:has(input:focus-visible){outline:3px solid #f7be37;outline-offset:3px}
+/* Atajo con modificador (Ctrl K o ⌘ K): un atajo de una sola tecla no cumple WCAG 2.1.4 */
+.tecla{flex:none;display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 6px;border:1px solid var(--line);border-radius:6px;background:#f9f7ff;color:var(--purple);font:700 12px/1 RobotoC,Arial,sans-serif;white-space:nowrap}
+.rapidas{display:flex;align-items:baseline;gap:14px;margin-top:16px}
+.rapidas .eyebrow{flex:none}
+.fichas{display:flex;flex-wrap:wrap;gap:8px}
+.ficha{height:32px;padding:0 14px;border-radius:16px;background:#fff;border:1px solid var(--line);color:var(--purple);font-size:13px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:background-color .16s,border-color .16s,color .16s}
+.ficha[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+.ficha[aria-pressed="true"]::after{content:'✕' / '';font-size:11px}
+@media (hover:hover){.ficha:hover{border-color:var(--accent);background:#f9f7ff}.ficha[aria-pressed="true"]:hover{background:var(--accent);border-color:var(--accent)}}
+/* Pantalla ancha: el campo llega hasta 720 px y sobra media fila a su derecha. Ahí van las
+   búsquedas rápidas, pegadas al borde derecho y en letra menor, en vez de gastar una franja
+   entera debajo. Va después de las reglas de arriba porque las pisa por orden, no por peso. */
+@media (min-width:1100px){
+  .buscador{display:flex;align-items:flex-start;gap:32px}
+  /* El campo no cede: manda él, y las rápidas se conforman con lo que sobra. */
+  .buscador .search{flex:0 0 720px}
+  .rapidas{flex:1 1 0;min-width:0;align-items:center;justify-content:flex-end;gap:16px;margin-top:0;min-height:57px}
+  .rapidas .fichas{justify-content:flex-end;gap:6px}
+  .rapidas .ficha{height:26px;padding:0 11px;border-radius:13px;font-size:12px}
+}
+
+.tramo.rayado,.muestra.rayado{background:repeating-linear-gradient(135deg,var(--tinta) 0 4px,color-mix(in srgb,var(--tinta) 45%,#fff) 4px 7px)}
+
+/* ===== Portada: favoritos y cifras ===== */
+.portada{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.portada-cabeza{margin:0 0 10px}
+.portada-cabeza h2{font-size:30px;letter-spacing:-.04em;margin:6px 0 0;font-weight:900}
+/* Las posiciones del bento van por ancho de pantalla (más abajo). --filas y --fila salen de DATA.favorites. */
+.bento{display:grid;gap:12px}
+.fav{position:relative;isolation:isolate;display:flex;flex-direction:column;min-width:0;border-radius:18px;border:1px solid var(--line);padding:16px 18px;color:var(--tinta);transition:transform .22s var(--curva),border-color .22s,box-shadow .22s}
+.fav::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),var(--brillo),transparent 70%)}
+.fav-eyebrow{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--tinta)}
+.fav-nombre{display:block;font-weight:900;letter-spacing:-.05em;line-height:.95;color:var(--tinta)}
+.fav-desc{display:block;line-height:1.4}
+.fav-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px}
+.fav-dominio{font-size:12px;font-weight:700;overflow-wrap:break-word;min-width:0}
+.fav-flecha{position:absolute;right:20px;top:16px;font-size:22px;font-weight:400;transition:transform .22s var(--curva)}
+.fav-1{--tinta:#fff;--brillo:color-mix(in srgb,#4938c9 75%,transparent);background:linear-gradient(135deg,var(--deep),#4934ae);border-color:transparent;padding:18px 20px;overflow:clip}
+.fav-1 .fav-eyebrow{color:#dcd8fb;line-height:1.6}
+.fav-1 .fav-tema{display:block}
+.fav-1 .fav-sep{display:none}
+.fav-1 .fav-nombre{font-size:42px;margin-top:auto}
+.fav-1 .fav-desc{font-size:14px;color:#efeeff;max-width:32ch;margin-top:8px}
+.fav-1 .fav-pie{margin-top:0;padding-top:12px;justify-content:flex-start;gap:16px}
+.fav-1 .fav-dominio{color:#dcd8fb}
+.fav-abrir{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--deep);font-size:13px;font-weight:700;padding:9px 15px;border-radius:999px}
+.fav-abrir b{font-weight:400;font-size:15px;transition:transform .22s var(--curva)}
+.fav-marca{position:absolute;z-index:-1;right:-6px;top:-18px;font-size:140px;font-weight:900;letter-spacing:-.07em;line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,#dcd8fb 60%,transparent)}
+/* Haz de luz: una sola vuelta al pasar el cursor o al enfocar, nunca en bucle */
+.fav-1::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;opacity:0;background:conic-gradient(from var(--ang),transparent 72%,#dcd8fb 80%,#f9f7ff 85%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.fav-1:is(:hover,:focus-visible)::after{animation:haz 1.8s var(--curva) 1}
+@keyframes haz{0%{--ang:0deg;opacity:0}15%{opacity:1}80%{opacity:1}100%{--ang:360deg;opacity:0}}
+/* Favoritos 02 en adelante: pareja de fondo y tinta permitida, asignada por orden desde el script */
+.fav-otro{background:var(--fondo);--brillo:color-mix(in srgb,#dcd8fb 70%,transparent)}
+.fav-otro .fav-nombre{font-size:27px;margin-top:6px}
+.fav-otro .fav-desc{font-size:13px;color:var(--purple);margin-top:5px}
+.fav-otro .fav-dominio{color:var(--tinta)}
+.fav:is(:hover,:focus-visible){border-color:var(--accent)}
+@media (hover:hover){
+  .fav:hover{transform:translateY(-3px);box-shadow:0 16px 32px color-mix(in srgb,var(--deep) 16%,transparent)}
+  .fav:hover::before{opacity:1}
+  .fav:hover .fav-flecha,.fav:hover .fav-abrir b{transform:translate(3px,-3px)}
+}
+/* Pantalla ancha: SINIC a la izquierda en todas las filas, los demás favoritos apilados al centro, cifras a la derecha */
+@media (min-width:1100px){
+  .bento{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(var(--filas,2),minmax(98px,auto))}
+  .fav-1{grid-column:1 / span 5;grid-row:1 / -1}
+  .fav-otro{grid-column:6 / span 4;grid-row:var(--fila,1)}
+  .bento[data-otros="1"] .fav-otro{grid-row:1 / -1}
+  .kpi-portales{grid-column:10 / span 3;grid-row:1}
+  .kpi-temas{grid-column:10 / span 3;grid-row:2 / -1}
+  .bento[data-favoritos="1"] .fav-1{grid-column:1 / span 9}
+  .bento[data-favoritos="0"] .kpi-portales{grid-column:1 / span 6;grid-row:1}
+  .bento[data-favoritos="0"] .kpi-temas{grid-column:7 / span 6;grid-row:1}
+}
+/* Pantalla mediana: dos columnas y las cifras en una fila completa debajo */
+@media (min-width:701px) and (max-width:1099px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(var(--filas-m,2),minmax(160px,auto))}
+  .fav-1{grid-column:1;grid-row:1 / -1}
+  .fav-otro{grid-column:2;grid-row:var(--fila,1)}
+  .bento[data-otros="1"] .fav-otro{grid-row:1 / -1}
+  .bento[data-favoritos="1"] .fav-1{grid-column:1 / -1}
+}
+
+/* Cifras */
+.cifras{display:contents}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px 16px;display:flex;flex-direction:column;min-width:0}
+.kpi-portales{justify-content:space-between}
+.kpi-temas{gap:6px}
+.kpi-etiqueta{font-size:11px;font-weight:900;letter-spacing:.13em;color:var(--purple);margin:0}
+.kpi-cifra{display:flex;align-items:flex-end;gap:10px;margin:0}
+.kpi-grande{font-size:52px;font-weight:900;line-height:.78;letter-spacing:-.05em;color:var(--accent)}
+.kpi-texto{font-size:14px;font-weight:700;color:var(--purple);line-height:1.2;padding-bottom:2px}
+.kpi-titulo{display:flex;align-items:baseline;gap:6px;margin:0;font-size:15px;font-weight:700;color:var(--purple)}
+.kpi-medio{font-size:22px;font-weight:900;line-height:.85;letter-spacing:-.04em;color:var(--accent)}
+.barra{display:flex;height:10px;border-radius:5px;background:#ece7ff}
+.tramo{flex:var(--c,1) 1 0;min-width:0;margin-right:3px;background:var(--tinta);transition:flex-grow .28s var(--curva),margin .28s}
+.tramo:first-child{border-radius:5px 0 0 5px}
+.tramo:last-child{margin-right:0;border-radius:0 5px 5px 0}
+.tramo.cero{margin-right:0}
+/* Dos columnas: 5 temas en 3 filas en vez de 5, para que la tarjeta de cifras no
+   sea quien decida la altura de todo el bloque de favoritos. */
+.leyenda{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;font-size:12px;line-height:1.3;color:var(--purple)}
+.leyenda li{display:flex;align-items:center;gap:7px;min-width:0}
+.leyenda span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leyenda b{font-weight:900;color:var(--deep);white-space:nowrap}
+.muestra{flex:none;width:10px;height:10px;border-radius:3px;background:var(--tinta);align-self:center}
+
+/* ===== Explorar: el mosaico ===== */
+.explorar{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);position:relative}
+.explorar .section-head{margin:0 0 20px}
+.explorar .section-head h2{font-size:34px;letter-spacing:-.04em;margin:6px 0 6px}
+.explorar .section-head p{font-size:14px;max-width:none}
+.control{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:none}
+.conmutador{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
+.conmutador button{border:0;background:none;border-radius:9px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--purple);display:inline-flex;align-items:center;gap:8px;transition:background-color .16s,color .16s}
+.conmutador button[aria-pressed="true"]{background:var(--deep);color:#fff}
+@media (hover:hover){.conmutador button[aria-pressed="false"]:hover{background:#ece7ff}}
+.icono{width:13px;height:13px;flex:none;color:currentColor}
+.icono-mosaico{background:linear-gradient(currentColor 0 0) 0 0/8px 8px no-repeat,linear-gradient(currentColor 0 0) 100% 0/3px 8px no-repeat,linear-gradient(currentColor 0 0) 0 100%/5px 3px no-repeat,linear-gradient(currentColor 0 0) 100% 100%/6px 3px no-repeat}
+.icono-lista{background:repeating-linear-gradient(currentColor 0 2px,transparent 2px 5.5px)}
+.conteo{margin:0;font-size:13px;font-weight:700;color:var(--purple)}
+
+.mosaico{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+.mosaico[data-modo="franjas"]{grid-template-columns:repeat(5,minmax(0,1fr))}
+.mosaico[data-modo="abierto"]{grid-template-columns:repeat(var(--columnas,4),minmax(0,1fr))}
+.tema{container:tema / inline-size;display:flex;flex-direction:column;gap:10px;min-width:0;padding:10px;background:var(--fondo);border:1px solid var(--line);border-radius:18px;scroll-margin-top:24px;transition:background-color .2s,border-color .2s,opacity .2s}
+/* Mientras se escribe, un tema sin coincidencias solo cambia de fondo: su título conserva el contraste */
+.tema.apagado{background:#f9f7ff}
+.tema-cabeza{position:relative;min-height:88px;display:flex;align-items:center;gap:14px;padding:4px 12px 4px 10px;border-radius:12px;transition:background-color .16s}
+.tema-num{flex:none;min-width:1.05em;font-size:calc(44px + 36px * var(--peso,1));font-weight:900;line-height:.85;letter-spacing:-.05em;color:var(--tinta);transition:--n .9s var(--curva),font-size .28s var(--curva)}
+.tema-num::before{content:counter(n,decimal-leading-zero)}
+.tema-textos{min-width:0;display:grid;grid-template-areas:"t" "d"}
+.tema-textos h3{grid-area:t;margin:0;font-size:20px;line-height:1.1;font-weight:900;letter-spacing:-.02em;color:var(--deep)}
+.tema-boton{border:0;background:none;padding:0;margin:0;color:inherit;font:inherit;letter-spacing:inherit;text-align:left}
+.tema-boton::after{content:'';position:absolute;inset:0;border-radius:12px}
+.tema-boton:focus-visible{outline:0}
+.tema-boton:focus-visible::after{outline:3px solid #f7be37;outline-offset:2px}
+.nombre-corto{display:none}
+.tema-desc,.tema-pista{grid-area:d;margin:5px 0 0;font-size:12px;line-height:1.35;transition:opacity .16s}
+.tema-desc{color:var(--purple)}
+.tema-pista{color:var(--tinta);font-weight:700;opacity:0}
+.tema:not(.abierto) .tema-cabeza:has(.tema-boton:focus-visible) .tema-desc{opacity:0}
+.tema:not(.abierto) .tema-cabeza:has(.tema-boton:focus-visible) .tema-pista{opacity:1}
+@media (hover:hover){
+  .tema-cabeza:hover{background:color-mix(in srgb,var(--tinta) 9%,transparent)}
+  .tema:not(.abierto) .tema-cabeza:hover .tema-desc{opacity:0}
+  .tema:not(.abierto) .tema-cabeza:hover .tema-pista{opacity:1}
+}
+/* Foco que el código pone en un título (tema abierto, h2 de Explorar): el mismo amarillo institucional */
+[tabindex="-1"]:focus-visible{outline:3px solid #f7be37;outline-offset:3px}
+.volver{display:none}
+@container tema (max-width:279px){
+  .tema-desc,.tema-pista{display:none}
+  .tema-textos h3{font-size:19px}
+}
+
+.celdas{list-style:none;margin:0;padding:0;flex:1;display:grid;gap:10px;grid-template-columns:repeat(var(--ancho,2),minmax(0,1fr));grid-auto-rows:minmax(132px,1fr)}
+.casilla{display:flex;min-width:0}
+.casilla .portal{flex:1;display:flex;flex-direction:column;min-width:0;min-height:132px;padding:16px;border-radius:12px;transition:background-color .16s,border-color .16s,opacity .16s}
+.casilla .portal:hover{transform:none;box-shadow:none}
+.casilla .portal strong{line-height:1.15;transition:color .16s}
+.casilla .portal .p-desc{margin-top:6px;line-height:1.35;transition:color .16s}
+.portal .p-nombre{display:inline;margin:0;color:inherit;font-size:inherit;line-height:inherit}
+.portal .p-dominio{margin:auto 0 0;padding-top:10px;font-size:12px;font-weight:700;line-height:1.25;color:#4934ae;overflow-wrap:break-word;transition:color .16s}
+.portal .p-fav{display:inline-block;vertical-align:3px;margin:0 0 0 4px;font-size:10px;line-height:1;font-weight:900;letter-spacing:.08em;color:#612cb0;background:#eee2fb;border-radius:6px;padding:4px 6px 3px}
+.casilla .portal b{transition:transform .16s var(--curva),color .16s}
+/* Tarjeta elegida: con el teclado es la del foco (:focus-visible) y, cuando hay ratón,
+   la de :hover, que va en su propia consulta más abajo. Las dos formas cambian fondo y
+   textos a la vez, para que el texto claro nunca quede sobre la tarjeta clara ni al
+   revés. En táctil la marca de agua no depende de ningún estado, porque está siempre:
+   eso lo fija el bloque táctil del final de la hoja. */
+.casilla .portal:focus-visible{background:var(--deep);border-color:var(--deep)}
+.casilla .portal:focus-visible strong{color:#fff}
+.casilla .portal:focus-visible .p-desc{color:#efeeff}
+.casilla .portal:focus-visible .p-dominio{color:#dcd8fb}
+.casilla .portal:focus-visible b{color:#fff;transform:translate(3px,-3px)}
+@media (hover:hover){
+  .casilla .portal:hover{background:var(--deep);border-color:var(--deep)}
+  .casilla .portal:hover strong{color:#fff}
+  .casilla .portal:hover .p-desc{color:#efeeff}
+  .casilla .portal:hover .p-dominio{color:#dcd8fb}
+  .casilla .portal:hover b{color:#fff;transform:translate(3px,-3px)}
+}
+/* Marca de agua con el logo de la entidad. Solo la llevan los portales que tienen
+   archivo en _recursos/logos.js; las demás tarjetas no cambian en nada.
+
+   La imagen no es el logo original sino una máscara: el dibujo en blanco sobre
+   transparente, ya recortado y ya medido por _herramientas/marcas.py. Eso deja
+   aquí solo cinco datos por marca, todos del índice:
+     --prop   proporción de la máscara (ya no se usa aquí: el propio archivo trae
+              su proporción y el navegador la respeta solo)
+     --esc    ancho que iguala el área: un logo ancho y bajo cubre menos tarjeta
+              que uno cuadrado del mismo ancho, así que se le da un poco más
+     --maxw   hasta dónde se deja ampliar, distinto en cada archivo
+     --op     cuánto pesa, escalada abajo para que se vea completo y no como un
+              detalle: el logo es el protagonista de la tarjeta elegida
+     --tenue  desenfoque, solo en los sellos con anillo de letras diminutas
+
+   La fusión es screen, que solo aclara: sobre el violeta --deep de la tarjeta
+   elegida la marca aparece, y sobre la tarjeta blanca en reposo no hay nada que
+   aclarar. Por eso el texto no pierde contraste mientras la tarjeta cambia de
+   color, y la marca se revela a medida que el fondo se oscurece.
+
+   inset:0 más margin:auto centra el logo completo dentro de la tarjeta, sin
+   recortarlo: max-width y max-height lo acotan y el navegador conserva su
+   proporción real solo, como hace cualquier imagen sin ancho y alto forzados. */
+.con-marca{isolation:isolate}
+.p-marca{position:absolute;z-index:-1;inset:0;margin:auto;width:auto;height:auto;
+  max-width:min(calc(58% * var(--esc,1)),var(--maxw,200px));max-height:58%;
+  object-fit:contain;pointer-events:none;
+  mix-blend-mode:screen;filter:blur(var(--tenue,0px));opacity:min(1,var(--op,.17) * 4.2)}
+/* En el mosaico la marca llega con la tarjeta: en reposo no está */
+.casilla .portal .p-marca{opacity:0;transform:scale(.85);transition:opacity .36s var(--curva),transform .36s var(--curva)}
+.casilla .portal:focus-visible .p-marca{opacity:min(1,var(--op,.17) * 4.2);transform:none}
+@media (hover:hover){.casilla .portal:hover .p-marca{opacity:min(1,var(--op,.17) * 4.2);transform:none}}
+/* En los favoritos la tarjeta no cambia de color, así que la marca está siempre.
+   En el favorito oscuro aclara, como en el mosaico; en los claros se invierte y
+   se funde con multiply. */
+.fav-1 .p-marca{max-width:min(calc(46% * var(--esc,1)),var(--maxw,200px));max-height:52%}
+.fav-1.con-marca .fav-marca{display:none}   /* o la cifra o el logo, no los dos */
+.fav-otro .p-marca{max-width:min(calc(50% * var(--esc,1)),var(--maxw,200px));max-height:58%;
+  mix-blend-mode:multiply;filter:invert(1) blur(var(--tenue,0px));opacity:min(1,var(--op,.17) * 1.6)}
+/* Se apaga el enlace y no el li: la entrada con scroll anima la opacidad del li y la pisaría.
+   La casilla apagada es inert, así que queda fuera del requisito de contraste. */
+.casilla.apagada .portal{opacity:.28}
+/* Foco en un portal: los demás bloques bajan su tinte, sin tocar la opacidad del texto */
+.mosaico:has(.portal:is(:hover,:focus-visible)) .tema:not(:has(.portal:is(:hover,:focus-visible))){background:#f9f7ff;border-color:var(--line)}
+.cierre{border-radius:12px;border:1px dashed color-mix(in srgb,var(--tinta) 40%,transparent);background:repeating-linear-gradient(135deg,transparent 0 9px,color-mix(in srgb,var(--tinta) 7%,transparent) 9px 18px);display:flex;align-items:flex-end;padding:16px;font-size:13px;line-height:1.35;color:var(--purple)}
+
+/* Tema abierto y lomos plegados */
+.tema.abierto{grid-column:1 / -1}
+.tema.abierto .tema-cabeza{min-height:120px;gap:20px;padding-left:14px}
+.tema.abierto .tema-num{font-size:96px}
+.tema.abierto .tema-textos h3{font-size:40px;letter-spacing:-.04em}
+.tema.abierto .tema-desc{font-size:16px;margin-top:8px;opacity:1}
+.tema.abierto .tema-pista{display:none}
+.tema.abierto .tema-boton::after{display:none}
+/* Abierto, el botón del título sigue activo (cierra el tema): lleva su propio foco visible */
+.tema.abierto .tema-boton:focus-visible{outline:3px solid #f7be37;outline-offset:3px;border-radius:4px}
+.tema.abierto .tema-cabeza:hover{background:none}
+.tema.abierto .volver{display:inline-flex;align-items:center;gap:8px;margin-left:auto;flex:none;align-self:flex-start;margin-top:10px;background:#fff;border:1px solid var(--line);color:var(--deep);border-radius:999px;padding:10px 16px;font-size:13px;font-weight:700}
+.tema.abierto .volver::before{content:'←' / '';font-weight:400}
+@media (hover:hover){.tema.abierto .volver:hover{border-color:var(--accent);background:#f9f7ff}}
+.tema.abierto .celdas{grid-template-columns:repeat(var(--abiertas,3),minmax(0,1fr));grid-auto-rows:minmax(150px,auto)}
+.tema.abierto .portal{min-height:150px;padding:20px}
+.tema.abierto .portal strong{font-size:22px}
+.tema.abierto .portal .p-desc{font-size:14px}
+.tema.lomo{padding:10px;justify-content:center}
+.tema.lomo .celdas,.tema.lomo .tema-desc,.tema.lomo .tema-pista,.tema.lomo .nombre-largo{display:none}
+.tema.lomo .nombre-corto{display:inline}
+.tema.lomo .tema-cabeza{min-height:74px}
+.tema.lomo .tema-cabeza::after{content:'+' / '';margin-left:auto;font-size:24px;font-weight:400;line-height:1;color:var(--tinta);transition:transform .16s var(--curva)}
+@media (hover:hover){.tema.lomo .tema-cabeza:hover::after{transform:rotate(90deg)}}
+.tema.lomo .tema-num{font-size:44px}
+.tema.lomo .tema-textos h3{font-size:18px}
+
+/* Índice pegado para pantallas angostas */
+.indice{display:none}
+
+/* Vista en lista */
+.lista{display:grid;gap:26px}
+.lista-tema h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:0 0 10px;font-size:19px;font-weight:900;letter-spacing:-.02em;color:var(--deep)}
+.lista-num{font-size:30px;line-height:.85;letter-spacing:-.05em;color:var(--tinta)}
+.lista-cuenta{font-size:13px;font-weight:700;color:var(--purple);letter-spacing:0}
+.lista ul{list-style:none;margin:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:14px}
+.lista li + li .fila{border-top:1px solid #ece7ff}
+.fila{display:grid;grid-template-columns:minmax(170px,250px) minmax(0,1fr) minmax(0,auto) 18px;align-items:center;gap:18px;min-height:48px;padding:9px 18px;font-size:14px;line-height:1.35;transition:background-color .16s}
+.fila:focus-visible{outline-offset:-3px}
+.lista li:first-child .fila{border-radius:14px 14px 0 0}
+.lista li:last-child .fila{border-radius:0 0 14px 14px}
+.lista li:only-child .fila{border-radius:14px}
+.fila strong{font-weight:900;color:#3f33b5}
+.fila-desc{color:var(--purple)}
+.fila-dominio{font-size:12px;font-weight:700;color:#4934ae;text-align:right;overflow-wrap:anywhere}
+.fila b{color:var(--accent);font-weight:400;font-size:17px;transition:transform .16s var(--curva)}
+@media (hover:hover){.fila:hover{background:#f9f7ff}.fila:hover b{transform:translate(3px,-3px)}}
+
+/* Sin resultados */
+.vacio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 32px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 36px}
+.vacio-num{font-size:120px;font-weight:900;line-height:.8;letter-spacing:-.06em;color:var(--accent)}
+.vacio h3{margin:0;font-size:28px;letter-spacing:-.03em;font-weight:900;color:var(--deep);overflow-wrap:anywhere}
+.vacio p{margin:6px 0 0;font-size:15px;color:var(--purple)}
+.vacio .kpi-etiqueta{margin-top:22px}
+.vacio-sugerencias{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.boton-todos{margin-top:22px;border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 20px;font-size:14px;font-weight:700}
+@media (hover:hover){.boton-todos:hover{background:var(--deep)}}
+
+/* ===== Movimiento ===== */
+::view-transition-group(*){animation-duration:280ms;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+.vt-activa .tema,.vt-activa .casilla{view-transition-name:var(--vt)}
+@keyframes subir{from{transform:translateY(12px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .casilla{animation:subir linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .num,.tema-num{transition:none}
+  .fav::before,.fav-1::after{display:none}
+  .fav:hover,.fav:focus-visible{transform:none!important}
+  .fav-flecha,.fav-abrir b,.casilla .portal b,.fila b{transform:none!important}
+  /* La marca de agua sigue apareciendo, sin desplazamiento ni fundido */
+  .p-marca{transition:none!important;transform:none!important}
+  .tramo{transition:none}
+  .tema.lomo .tema-cabeza::after{transform:none!important;transition:none}
+  ::view-transition-group(*){animation-duration:0s}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:120ms}
+}
+
+/* ===== Alto contraste ===== */
+/* En alto contraste, --line vale #392686 (institucional.css) */
+body.high-contrast .tema,body.high-contrast .kpi,body.high-contrast .fav-otro,body.high-contrast .vacio,body.high-contrast .lista ul{background:#fff;border:2px solid var(--line)}
+body.high-contrast .fav::before,body.high-contrast .fav-1::after{display:none}
+body.high-contrast .ficha,body.high-contrast .conmutador{border-color:var(--line)}
+body.high-contrast .cierre{border-color:var(--line)}
+/* En alto contraste la tarjeta se queda limpia: la marca de agua es decorativa */
+body.high-contrast .p-marca{display:none}
+
+/* ===== Pantallas medianas: temas apilados en 3 columnas ===== */
+@media (max-width:1099px){
+  .indice{display:block;position:sticky;top:0;z-index:6;height:52px;margin:0 -24px 14px;background:#f9f7ff;border-bottom:1px solid var(--line)}
+  .indice ul{list-style:none;margin:0;padding:0 24px;height:100%;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;position:relative}
+  .indice ul::-webkit-scrollbar{display:none}
+  .indice li{flex:none;scroll-snap-align:start}
+  .indice a{position:relative;display:flex;align-items:center;gap:6px;height:100%;padding:0 12px;font-size:13px;font-weight:700;color:var(--purple);white-space:nowrap}
+  .indice a b{font-weight:900;color:var(--tinta,var(--accent))}
+  .indice a[aria-current="location"]{font-weight:900;color:var(--deep)}
+  .indice a[aria-current="location"]::after{content:'';position:absolute;left:10px;right:10px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--accent)}
+  /* El índice pegado mide 52 px: lo que recibe foco o se enlaza queda por debajo de él */
+  html{scroll-padding-top:64px}
+  .indice a:focus-visible{outline-offset:-3px}
+  .tema{scroll-margin-top:64px}
+  .mosaico[data-modo="apilado"] .celdas{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(120px,auto)}
+  .cifras{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px;grid-column:1 / -1}
+}
+/* Apilado en pantalla ancha (pocos resultados o datos que no llenan el mosaico):
+   cada bloque mide lo que sus casillas y los bloques se acomodan uno junto a otro. */
+@media (min-width:1100px){
+  .mosaico[data-modo="apilado"]{display:flex;flex-wrap:wrap}
+  .mosaico[data-modo="apilado"] .tema{flex:0 1 auto;width:clamp(380px,calc(var(--m,5) * 238px + (var(--m,5) - 1) * 10px + 22px),100%)}
+  .mosaico[data-modo="apilado"] .celdas{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));grid-auto-rows:minmax(132px,auto)}
+}
+
+/* ===== Móvil ===== */
+@media (max-width:700px){
+  .tecla{display:none}
+  .rapidas{display:block;margin-top:14px}
+  .rapidas .eyebrow{display:block;margin-bottom:8px}
+  /* 6 px de aire alrededor: el contorno de foco (3 px más 3 px de separación) no se recorta al desplazar la fila */
+  .fichas{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:6px;scrollbar-width:none;margin:-4px -17px 0 -6px;padding:6px 17px 6px 6px}
+  .fichas::-webkit-scrollbar{display:none}
+  .ficha{height:40px;flex:none;scroll-snap-align:start;font-size:14px}
+  .portada{margin-top:26px;padding-top:20px}
+  .portada-cabeza h2{font-size:25px}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:10px}
+  .fav-1{grid-column:1 / -1;grid-row:auto;min-height:190px;padding:18px 18px 16px}
+  .fav-1 .fav-nombre{font-size:40px;padding-top:18px}
+  .fav-1 .fav-desc{font-size:14px;margin-top:8px}
+  .fav-1 .fav-pie{padding-top:14px}
+  .fav-marca{font-size:150px;top:-26px}
+  .fav-otro{grid-column:auto;grid-row:auto;min-height:132px;padding:14px 14px 12px}
+  .fav-otro.fav-sola{grid-column:1 / -1}
+  .fav-otro .fav-nombre{font-size:22px;margin-top:8px}
+  .fav-otro .fav-desc{font-size:12px}
+  .fav-flecha{right:12px;top:10px;font-size:18px}
+  .fav-tema{display:none}
+  .fav-otro .fav-dominio{font-size:11px}
+  .cifras{display:grid;grid-template-columns:1fr;gap:14px;grid-column:1 / -1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+  .cifras .kpi{border:0;border-radius:0;padding:0;background:none}
+  .kpi-portales{gap:10px}
+  .kpi-grande{font-size:48px}
+  .kpi-temas{padding-top:14px!important;border-top:1px solid #ece7ff!important}
+  .explorar{margin-top:34px;padding-top:20px}
+  .explorar .section-head h2{font-size:27px}
+  .control{align-items:flex-start;margin-top:14px}
+  .indice{margin:0 -17px 12px}
+  .indice ul{padding:0 17px}
+  .tema-cabeza{min-height:80px;padding-left:8px}
+  .mosaico[data-modo="apilado"] .celdas{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(104px,auto);gap:8px}
+  .casilla.ancha{grid-column:1 / -1}
+  .casilla .portal{min-height:104px;padding:13px}
+  .casilla .portal strong{font-size:15px;padding-right:16px}
+  .casilla .portal .p-desc{font-size:12px}
+  .casilla .portal b{right:11px;top:9px;font-size:17px}
+  .portal .p-dominio{font-size:11px}
+  /* La tarjeta de móvil es baja y ancha: la marca ocupa menos para no taparla entera */
+  .casilla .p-marca{max-width:min(calc(52% * var(--esc,1)),var(--maxw,200px));max-height:52%}
+  .mosaico[data-modo="abierto"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tema.abierto{grid-column:1 / -1}
+  .tema.abierto .tema-cabeza{height:auto;min-height:96px;flex-wrap:wrap;gap:6px 14px;padding:8px 8px 10px}
+  .tema.abierto .tema-num{font-size:60px}
+  .tema.abierto .tema-textos{flex:1 1 180px}
+  .tema.abierto .tema-textos h3{font-size:26px}
+  .tema.abierto .tema-desc{font-size:14px}
+  .tema.abierto .volver{margin:4px 0 0}
+  .tema.abierto .celdas{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  .tema.abierto .portal{min-height:0}
+  .tema.abierto .portal strong{font-size:18px}
+  .tema.lomo{padding:4px 10px 4px 6px;border-radius:14px}
+  .tema.lomo .tema-cabeza{min-height:52px;gap:8px;padding:0 4px}
+  .tema.lomo .tema-num{font-size:26px;min-width:0}
+  .tema.lomo .tema-textos h3{font-size:14px;line-height:1.15}
+  .tema.lomo .tema-cabeza::after{font-size:20px}
+  .fila{grid-template-columns:minmax(0,1fr) 18px;gap:2px 12px;padding:12px 16px}
+  .fila strong,.fila-desc,.fila-dominio{grid-column:1}
+  .fila b{grid-column:2;grid-row:1}
+  .fila-dominio{text-align:left}
+  .vacio{grid-template-columns:1fr;padding:24px 20px}
+  .vacio-num{font-size:72px}
+  .vacio h3{font-size:22px}
+}
+/* ---------- Mapa · portado de la Rosa de los saberes ----------
+   La paleta de la rosa vive en .mapa y no en :root, para que el mosaico siga
+   con la suya. Las tres clases que chocaban con el mosaico llevan prefijo:
+   .mapa-fila, .mapa-fila-item y .mapa-num. */
+.mapa{position:relative;container:mapa / inline-size;
+  --lila:#dcd8fb;--lila-2:#e6e0ff;--banda:#ece7ff;--nube:#f9f7ff;--violeta:#4934ae;
+  --tinta:#3a2e96;--flecha:#503bd0;--borde:#d8d1f2;--realce:#8777d9;
+  --ease-back:cubic-bezier(.34,1.56,.64,1);--ease-expo:cubic-bezier(.16,1,.3,1);
+  background-color:#fff;border:1px solid var(--borde);border-radius:17px;padding:28px;
+  background-image:radial-gradient(circle at 50% 50%,#f9f7ff 0,#f9f7ff 22%,#f9f7ff00 46%),radial-gradient(#dcd8fb 1px,transparent 1.5px);
+  background-size:100% 100%,22px 22px;background-position:0 0,11px 11px}
+.mapa-lienzo{display:grid;grid-template-columns:minmax(0,1fr) var(--ancho-centro) minmax(0,1fr);height:var(--alto)}
+.mapa-col{min-width:0}
+.grupo+.grupo{margin-top:var(--sep)}
+.grupo h3{margin:0;height:var(--cab)}
+.cabecera{width:100%;height:100%;display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:10px;padding:0 12px;text-align:left;color:var(--violeta);transition:background .15s}
+.cabecera.is-foco{background:var(--banda)}
+.grupo{border-radius:12px;transition:background .2s}
+.grupo.is-fijo{background:var(--banda)}
+.grupo.is-fijo .cabecera.is-foco{background:var(--lila-2)}
+.mapa-num{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;flex:none;letter-spacing:0}
+.mapa-num--solido{background:var(--c);color:#fff}
+.mapa-num--claro{background:var(--lila);color:var(--deep);box-shadow:inset 0 0 0 1.5px #4938c9}
+.cab-nombre{font-size:12px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cab-cuenta{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;font-size:12px;font-weight:700;color:var(--violeta);white-space:nowrap;line-height:1.15;text-align:right}
+.cab-cuenta .sin{font-size:11px;font-weight:900}
+.filas{list-style:none;margin:0;padding:0}
+.mapa-fila-item{height:var(--fila);transition:opacity .2s}
+.mapa-fila-item.is-apagado{opacity:.3}
+.mapa-fila{height:100%;display:flex;align-items:center;gap:8px;padding:0 12px;border-radius:9px;color:var(--tinta);font-weight:900;font-size:15px;transition:background .15s}
+/* El realce sigue al estado (is-foco), no a :hover: un puntero quieto sobre una
+   fila que llega con el desplazamiento no la enciende. Solo cuenta el movimiento
+   real del mouse. */
+.mapa-fila:focus-visible,.mapa-fila-item.is-foco .mapa-fila{background:var(--lila-2)}
+.mapa-fila .estrella{color:#4938c9;font-size:13px;flex:none}
+.mapa-fila .nombre{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mapa-fila .nombre.is-apretado{font-size:13px;letter-spacing:-.01em}
+.mapa-fila .guia{flex:1 1 auto;min-width:8px;height:2px;align-self:center;margin-top:5px;background:radial-gradient(circle,#d7d1f4 1px,transparent 1.3px) 0 50%/6px 2px repeat-x}
+.mapa-fila b{font-weight:400;color:var(--flecha);font-size:16px;flex:none;transition:transform .2s var(--ease-expo)}
+.mapa-fila:focus-visible b,.mapa-fila-item.is-foco b{transform:translateY(-2px)}
+.rosa{position:relative;width:var(--ancho-centro);height:var(--alto)}
+.rosa-leyenda{position:absolute;left:0;right:0;bottom:2px;margin:0;text-align:center;font-size:11px;font-weight:700;color:var(--violeta)}
+.rosa-leyenda span{color:#4938c9}
+/* Columnas angostas (1100 a 1240 px, o con A+): todo cabe sin cortar nombres */
+@container mapa (max-width: 1180px){
+  .mapa-lienzo{margin:0 -12px}
+  .cabecera{padding:0 8px;gap:8px}
+  .cab-nombre{font-size:11px;letter-spacing:.035em}
+  .cab-cuenta{font-size:11px}
+  .mapa-fila{padding:0 8px;gap:6px}
+}
+.rosa-svg{display:block;overflow:visible;font-family:RobotoC,Arial,sans-serif}
+.rosa-svg *{pointer-events:none}
+.orbita{fill:none;stroke:#d7d1f4;stroke-width:1.3;stroke-dasharray:2 7;stroke-linecap:round;transform-box:fill-box;transform-origin:center;transition:transform 1.1s var(--ease-expo)}
+.orbita--a{transform:rotate(var(--giro,0deg))}
+.orbita--b{transform:rotate(calc(var(--giro,0deg) * -1))}
+.linea{fill:none;stroke:var(--line);stroke-width:1;transition:stroke .2s,opacity .2s,stroke-width .2s}
+.linea.is-tema{stroke:#4938c9}
+.hay-consulta .linea{opacity:.3}
+.hay-consulta .linea.is-coincide{stroke:#4938c9;opacity:.8}
+.hay-foco .linea{opacity:.35}
+.hay-foco .linea.is-foco{opacity:1;stroke:#4938c9;stroke-width:1.6}
+.arco{transform:translate(calc(var(--ux) * var(--d,0px)),calc(var(--uy) * var(--d,0px)));transition:transform .3s var(--ease-back)}
+.arco path{transition:opacity .2s}
+.arco.is-hover{--d:4px}
+.arco.is-fijo,.arco.is-actual{--d:10px}
+/* Tema sin coincidencias: se apaga el arco, no su número */
+.arco.is-apagado path{opacity:.3}
+.arco text{font-size:11px;font-weight:900;text-anchor:middle;dominant-baseline:central}
+.arco--solido path{fill:var(--c)}
+.arco--solido text{fill:#fff}
+.arco--solido.is-apagado text{fill:var(--deep)}
+.arco--claro path{fill:var(--lila);stroke:#4938c9;stroke-width:1.2}
+.arco--claro text{fill:var(--deep)}
+.punto-nucleo{fill:#fff;stroke:#4938c9;stroke-width:1.6;transform-box:fill-box;transform-origin:center;transition:transform .25s var(--ease-back),fill .2s}
+.punto-anillo{fill:none;stroke:#4938c9;stroke-width:1.2}
+.punto-halo{fill:var(--lila);opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .2s}
+.punto{transition:opacity .2s}
+.punto.is-coincide .punto-nucleo{fill:#4938c9}
+.punto.is-apagado{opacity:.3}
+.punto.is-foco .punto-nucleo{transform:scale(1.6)}
+.punto.is-foco .punto-halo{opacity:1}
+.haz{fill:none;stroke-linecap:round;visibility:hidden}
+.haz--cola{stroke:var(--lila);stroke-width:5}
+.haz--cabeza{stroke:#4938c9;stroke-width:2.6}
+.centro{position:absolute;border-radius:50%;background:#fff;border:1px solid var(--borde);box-shadow:0 14px 34px #2e286e17,inset 0 0 0 7px var(--nube);display:grid;place-items:center;text-align:center;padding:24px}
+.centro-cuenta,.centro-ficha{display:flex;flex-direction:column;align-items:center;max-width:150px}
+.centro-cuenta strong{font-size:52px;line-height:1;font-weight:900;letter-spacing:-.04em;color:var(--deep)}
+.centro-linea{font-size:13px;font-weight:700;color:var(--violeta);margin-top:6px;line-height:1.25}
+.centro-sub{font-size:11px;color:var(--violeta);margin-top:3px}
+.c-tema{font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--violeta)}
+.c-nombre{font-size:18px;font-weight:900;line-height:1.08;color:var(--tinta);margin:4px 0 5px;letter-spacing:-.02em}
+.c-desc{font-size:12px;line-height:1.3;color:var(--purple)}
+.c-dominio{font-size:11px;font-weight:700;color:var(--purple);margin-top:6px}
+.c-pie{font-size:11px;font-weight:700;color:#4938c9;margin-top:4px;white-space:nowrap;letter-spacing:-.01em}
+/* Icono de la pestaña Mapa, del mismo tamaño que los del mosaico y la lista */
+.icono-mapa{position:relative;border:2px solid currentColor;border-radius:50%}
+.icono-mapa::after{content:"";position:absolute;left:50%;top:50%;width:3.5px;height:3.5px;margin:-1.75px 0 0 -1.75px;border-radius:50%;background:currentColor}
+/* La pestaña Mapa nombra dos figuras y el umbral es el puntero, no el ancho: sin
+   puntero las barras contadas caben desde 320 px y la pestaña se queda. Con puntero
+   manda la rosa, que necesita 1100 px, y por debajo de eso la vista se repliega en la
+   lista y la pestaña se oculta. El selector lleva .conmutador button porque esa regla
+   fija el display. */
+@media (hover:hover) and (max-width:1099px){.conmutador button[data-vista="mapa"]{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .orbita,.arco,.mapa-fila b,.punto-nucleo,.linea,.cabecera,.mapa-fila-item,.punto,.grupo,.mapa-fila{transition:none}
+  .mapa-fila:focus-visible b,.mapa-fila-item.is-foco b{transform:none}
+}
+
+/* ==========================================================================
+   TÁCTIL · tercera y última mitad de la hoja
+   ==========================================================================
+   Va al final a propósito, igual que el bloque de la propuesta unificada: casi
+   todas estas reglas repiten selectores de arriba con la misma especificidad y
+   solo ganan por orden de aparición. Invertir el orden pierde el bloque entero.
+
+   EL CRITERIO DE ENTRADA ES UNO Y SE ESCRIBE UNA SOLA VEZ: en cuanto el medio
+   declara que no hay puntero fino, la interfaz cambia de figura y de tamaños.
+   Ninguna regla táctil se escribe fuera de esta consulta. La red de seguridad
+   es el censo en 1440 px con ratón, que tiene que seguir dando las mismas
+   cifras que pruebas\tactil\linea-base.json.
+
+   SECCIONES, en el orden de los pasos:
+     0. Tokens del bloque
+     1. El enlace de salto deja de tapar el logo          (paso 4)
+     2. La cabecera de tema recupera su altura tocable    (paso 5)
+     3. El buscador ya no provoca la ampliación de iOS    (paso 6)
+     4. Sin desborde horizontal al 200 por ciento         (paso 7)
+     5. Todos los objetivos a 44 por 44 px con aire       (paso 8)
+     6. Las dos tiras horizontales avisan de que siguen   (paso 9)
+     7. Zócalo: buscador, vistas y temas a mano           (paso 11)
+     8. La barra de accesibilidad deja de flotar          (paso 12)
+     9. La tarjeta muestra su marca sin tocar nada        (paso 13)
+    10. Mapa táctil: Barras contadas                      (paso 14)
+    11. Menos movimiento y alto contraste
+   ========================================================================== */
+
+/* Red de seguridad de escritorio del zócalo: con ratón el componente no pinta
+   contenido y esta regla asegura que el anfitrión vacío tampoco genere caja.
+   Es la única regla del bloque que vive fuera de la consulta, y es de ocultar. */
+.zocalo{display:none}
+
+@media (hover:none),(pointer:coarse){
+
+  /* ===== 0. Tokens del bloque ===== */
+  /* --toque y --aire son los dos pisos de la pauta. --aire-seguro es lo que se
+     escribe de verdad: a 8 px exactos la medición lee 7,9 por subpíxeles, y el
+     censo cuenta 7,9 como par pegado. Los dos anclajes llevan env() para que la
+     barra inferior y el canto derecho respeten la muesca del aparato. */
+  :root{
+    --toque:44px;
+    --aire:8px;
+    --aire-seguro:10px;
+    --anclaje-abajo:calc(8px + env(safe-area-inset-bottom));
+    --anclaje-derecha:calc(8px + env(safe-area-inset-right));
+  }
+
+  /* ===== 1. El enlace de salto deja de tapar el logo (paso 4) ===== */
+  /* El enlace deja de robar el toque del logo y sigue estando en el recorrido
+     con Tab, que es la única razón de que exista.
+
+     La técnica es caja de área cero con el contenido recortado, y NO
+     visibility:hidden: medido en Chromium, con visibility oculta el enlace
+     desaparece del recorrido con Tab y un enlace de salto que no se puede
+     enfocar no sirve para nada. Con 0 por 0 px sí se enfoca, en el mismo sitio
+     del recorrido que antes, y al recibir foco recupera su caja entera con
+     alto de 44 px. El transform de 180 por ciento hacia arriba se retira
+     porque era lo que le dejaba la caja encima del logo, donde el dedo caía.
+
+     De paso desaparece de las tres medidas: sin área no es objetivo tocable, no
+     entra en el censo, ni en los pares de vecinos, ni en la rejilla de la
+     esquina. */
+  .saltar{
+    width:0;
+    height:0;
+    padding:0;
+    overflow:hidden;
+    transform:none;
+    opacity:1;
+    pointer-events:none;
+  }
+  .saltar:focus{
+    width:auto;
+    height:auto;
+    min-height:var(--toque);
+    padding:10px 16px;
+    overflow:visible;
+    pointer-events:auto;
+    display:inline-flex;
+    align-items:center;
+  }
+
+  /* ===== 2. La cabecera de tema recupera su altura tocable (paso 5) ===== */
+  /* La banda muerta que atravesaba el centro de cada cabecera la hacían dos
+     elementos que no son interactivos y se pintan por encima del ::after del
+     botón. Sacarlos del hit test no cambia ni un píxel del dibujo. */
+  .tema-desc,.tema-pista{pointer-events:none}
+  /* Refuerzo: el pseudoelemento que recibe el toque queda por encima de todo lo
+     que la cabecera pinta sin posición propia. */
+  .tema-boton::after{z-index:1}
+  /* El sondeo vertical mide el ::after, que cubre la cabecera entera; el censo
+     mide la caja del propio botón, que era el renglón del título y daba 22 px.
+     Los dos tienen que llegar al piso, así que el botón lleva alto real. */
+  .tema-boton{min-height:var(--toque);display:flex;align-items:center}
+  /* Abierto, la salida al mosaico también es objetivo tocable. */
+  .tema.abierto .volver{min-height:var(--toque)}
+
+  /* ===== 3. El buscador ya no provoca la ampliación de iOS (paso 6) ===== */
+  /* iOS amplía la página al enfocar un campo de menos de 16 px y no la
+     devuelve. La letra sube a 16 px y el alto se conserva en los 45 px medidos,
+     fijándolo en vez de dejarlo salir del relleno: así la cifra no depende de
+     la métrica de la fuente. No se toca la etiqueta viewport: maximum-scale y
+     user-scalable=no arreglarían el síntoma rompiendo el zoom del usuario.
+     Solo en teléfono, que es donde la hoja bajaba la letra a 13 px; en tableta
+     el campo ya hereda los 16 px del body. */
+  @media (max-width:700px){
+    .search input{font-size:16px;height:45px;padding:0}
+  }
+
+  /* ===== 4. Sin desborde horizontal al 200 por ciento de zoom (paso 7) ===== */
+  /* A 195 px CSS, que es lo que deja el zoom al 200 por ciento en un teléfono
+     de 390 px, la fila del encabezado no cabe. Ahora se parte en dos y el botón
+     de explorar encoge en vez de empujar: su sitio lo decide el reparto de la
+     fila y no un margen automático. */
+  .brandbar .top{height:auto;min-height:64px;flex-wrap:wrap;justify-content:space-between;gap:10px 25px;padding:8px 0}
+  .mobile-nav{margin-left:0;min-width:0}
+  /* El logo cede antes de desbordar: a 160 px CSS sus 135 px fijos salían 9 px
+     por la derecha. */
+  .official-logo{max-width:100%}
+  /* El otro desborde de 195 px lo dejaba el nombre del tema: el disco del número
+     se lleva 84 px del ancho y 'Convocatorias' no cabe ni partiendo por
+     espacios. Se deja partir la palabra, que es lo que pide el reflow, y en el
+     contenedor más angosto el número vuelve a su tamaño de partida para que
+     quede sitio. Con anywhere, y no con break-word, el ancho mínimo del texto
+     también baja, que es lo que impide que el botón empuje. */
+  .tema-boton{overflow-wrap:anywhere}
+  /* Lo mismo en la tarjeta: 'Gastroherencia' y el sello FAVORITO son palabras
+     sueltas que a 160 px CSS no caben en la columna. El dominio ya se partía
+     solo, con break-word, desde la hoja de escritorio. */
+  .portal{overflow-wrap:anywhere}
+  /* Y en los accesos favoritos, donde el bento reparte dos columnas de 56 px a
+     160 px CSS y el nombre del portal no entra en ninguna. Es el resto del
+     desborde de 87 px de la línea base. */
+  .fav{overflow-wrap:anywhere}
+  @container tema (max-width:279px){
+    .tema-num{font-size:44px;min-width:0}
+  }
+
+  /* ===== 5. Todos los objetivos a 44 por 44 px con aire (paso 8) ===== */
+  /* Los seis enlaces institucionales, de 12 px de alto en tableta. Si a esa
+     altura no caben en una fila se reparten en dos, nunca se recortan. */
+  .nav .wrap{height:auto;min-height:52px;flex-wrap:wrap;gap:var(--aire-seguro) 29px;padding:4px 0}
+  .nav a{min-width:var(--toque);min-height:var(--toque);display:inline-flex;align-items:center;justify-content:center}
+
+  /* Los dos botones del encabezado. */
+  .header-search{min-height:var(--toque);display:inline-flex;align-items:center}
+  .mobile-nav{min-height:var(--toque)}
+
+  /* Las ocho búsquedas rápidas. El segundo selector es para la regla de
+     pantalla ancha, que las baja a 26 px y tiene más peso que .ficha sola. */
+  .fichas{gap:var(--aire-seguro)}
+  .ficha,.rapidas .ficha{height:auto;min-height:var(--toque);padding:0 16px}
+
+  /* El conmutador de vistas, que es el control más usado. Se pliega cuando no
+     cabe: con la pestaña Mapa a la vista y la letra ampliada al máximo, las
+     tres pestañas en una fila desbordaban el ancho del contenedor. */
+  .conmutador{flex-wrap:wrap;gap:var(--aire-seguro);padding:4px}
+  .conmutador button{min-height:var(--toque);padding:8px 14px}
+
+  /* Los cinco enlaces del índice pegado. El aire se da con gap y no con relleno
+     del li: el enlace mide el alto del li, así que rellenar el li le quitaría
+     altura de toque, que es justo lo que no se puede perder. */
+  .indice ul{gap:var(--aire-seguro)}
+
+  /* El mosaico apilado de teléfono: 8 px de hueco se leen como 7,9. */
+  @media (max-width:700px){
+    .mosaico[data-modo="apilado"] .celdas{gap:var(--aire-seguro)}
+    .mosaico[data-modo="abierto"]{gap:var(--aire-seguro)}
+  }
+
+  /* ===== 6. Las dos tiras horizontales avisan de que siguen (paso 9) ===== */
+  /* En 390 px solo caben 4 de las 8 fichas y los dos últimos temas del índice
+     quedan fuera de la tira. El aviso es un degradado en el borde derecho, con
+     pointer-events:none para que no entre en el hit test de lo que hay debajo.
+     El enganche pasa de mandatory a proximity, que es lo que hace que el
+     arrastre se sienta agarrado en vez de saltar a la ficha siguiente. */
+  .fichas{scroll-snap-type:x proximity}
+  /* El índice se pega y se desplaza por debajo de 1100 px; por encima está en
+     display:none y el pseudoelemento no llega a dibujarse. */
+  .indice::after{content:'';position:absolute;right:0;top:0;bottom:1px;width:28px;pointer-events:none;background:linear-gradient(90deg,#f9f7ff00,#f9f7ff)}
+  /* La tira de fichas solo se desplaza en teléfono: por encima de 700 px las
+     ocho caben envolviendo y no hay continuación de la que avisar. */
+  @media (max-width:700px){
+    .rapidas{position:relative}
+    .rapidas::after{content:'';position:absolute;right:-17px;bottom:0;height:56px;width:28px;pointer-events:none;background:linear-gradient(90deg,#efeeff00,var(--lav))}
+  }
+
+  /* ===== 7. Zócalo: buscador, vistas y temas a mano (paso 11) ===== */
+  /* POR QUÉ STICKY Y NO FIXED: el criterio de solapes se da sobre position
+     fixed, y con razón, porque un elemento fijo tapa enlaces en cualquier punto
+     del recorrido. Pegado desde el flujo, el zócalo hace las dos cosas a la
+     vez: se queda a la vista mientras la página se desplaza y, al llegar al
+     final, vuelve a su sitio detrás del pie, así que su propia caja reserva el
+     alto y la última tarjeta queda entera. Por eso no hay relleno inferior de
+     reserva ni en main ni en body: lo reserva la caja del zócalo.
+
+     POR QUÉ SOLO FLOTA CON LA PÁGINA DESPLAZADA: pegado desde el principio, el
+     zócalo se pintaba sobre lo que hay en la primera pantalla, y el censo lo
+     medía como 26 pares de vecinos con 0,0 px de aire contra enlaces de portal,
+     botones de tema y fichas de búsqueda rápida. Es un fallo real: ahí el dedo
+     cae sobre dos cosas a la vez. Con la página en su principio el zócalo
+     tampoco hace falta, porque el buscador, el conmutador y los temas están a la
+     vista por sí solos, así que se queda posado en su sitio, que es el final del
+     documento, y sube a flotar en cuanto la página se desplaza. El atributo
+     data-flotante lo pone el componente y es lo único que cambia entre los dos
+     estados: la maquetación es la misma, porque un elemento pegado no sale del
+     flujo, y al final del recorrido las dos posiciones coinciden.
+
+     El plegado no es un adorno: a 195 y a 160 px CSS los cinco botones no caben
+     en una fila y sin plegar aparecería desborde horizontal. */
+  .zocalo{
+    /* SIEMPRE PEGADO, aunque no siempre anclado: lo que cambia entre los dos
+       estados es bottom y nada más. Con bottom:auto una caja pegada se queda
+       exactamente en su sitio del flujo, así que posado no se pinta sobre nada, y
+       el elemento sigue siendo el antepasado posicionado de sus cinco botones en
+       los dos estados. Eso último no es un detalle: si el zócalo pasara de static
+       a sticky, el offsetParent de los botones cambiaría con él y su offsetTop
+       daría un salto de 4276 px a 10 px, que la comprobación de movimiento con
+       prefers-reduced-motion lee como cinco botones que se mueven al recibir el
+       foco. Está medido. */
+    position:sticky;
+    bottom:auto;
+    z-index:9;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:var(--aire);
+    width:min(100% - 8px,520px);
+    margin:16px auto var(--anclaje-abajo);
+    padding:6px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 -6px 20px #2c236926;
+  }
+  /* Flotando: la única declaración que separa los dos estados. El anclaje va en
+     bottom y no en el margen porque, medido en Chromium, la caja pegada se ancla
+     por su borde y el margen inferior no cuenta; el margen de la regla de arriba
+     es el que da ese mismo aire cuando está posado al final de la página. */
+  .zocalo[data-flotante]{bottom:var(--anclaje-abajo)}
+  /* Un equipo que declara (pointer:coarse) y a la vez (hover:hover) no pinta
+     nada dentro: sin esto quedaría una barra vacía al final de la página. */
+  .zocalo:empty{display:none}
+  .zocalo-boton{
+    min-height:var(--toque);
+    min-width:var(--toque);
+    padding:0 8px;
+    border:0;
+    background:none;
+    border-radius:12px;
+    color:var(--purple);
+    font-size:13px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  /* La vista activa se lee igual arriba y abajo: es la misma regla del
+     conmutador del encabezado de la sección. */
+  .zocalo-boton[aria-pressed="true"]{background:var(--deep);color:#fff}
+  /* El anillo global usa offset 3 px y en el borde redondeado del zócalo se
+     recorta. Es el mismo remedio de .indice a:focus-visible. */
+  .zocalo-boton:focus-visible{outline-offset:-3px}
+  /* El aire de dentro del grupo va a 10 px por lo mismo que el resto: a 8
+     exactos la medida cae en 7,9. */
+  .zocalo-vistas{display:flex;flex-wrap:wrap;gap:var(--aire-seguro);border:1px solid var(--line);border-radius:14px;padding:3px}
+  /* NUNCA display:none ni visibility:hidden en el rótulo: si en la pantalla más
+     angosta hiciera falta esconderlo, el patrón es .solo-lector, que lo deja en
+     el árbol de accesibilidad. */
+  .zocalo-texto{font-size:12px;white-space:nowrap}
+  .zocalo .icono{width:14px;height:14px}
+  /* El destino de un salto no queda debajo del zócalo. Arriba ya lo hace
+     html{scroll-padding-top:64px} con el índice pegado. */
+  html{scroll-padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+
+  /* ===== 8. La barra de accesibilidad deja de flotar (paso 12) ===== */
+  /* Flotando tapaba hasta 94 por 39 px de un enlace de portal en casi cualquier
+     punto del recorrido, y en tableta se apoyaba justo donde descansa la mano.
+     Pasa a una fila propia bajo el encabezado, alineada a la derecha: al dejar
+     de flotar el solape desaparece solo y no hay que reservarle sitio.
+
+     Sin fondo violeta los tres botones necesitan borde propio para separarse de
+     la página, que en esta zona es --lav. */
+  .accessibility{
+    position:static;
+    right:auto;top:auto;bottom:auto;
+    z-index:auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:flex-end;
+    gap:var(--aire-seguro);
+    margin:12px 0 0;
+    padding:0 24px;
+    background:none;
+    border-radius:0;
+    box-shadow:none;
+  }
+  .accessibility button{
+    width:var(--toque);
+    height:var(--toque);
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#fff;
+    color:var(--purple);
+    font-size:14px;
+  }
+  /* El contraste ya publica su estado en aria-pressed: aquí se pinta, con el
+     mismo par de .ficha[aria-pressed="true"]. Va dentro de la consulta a
+     propósito: el prototipo de escritorio no pinta estado en ese botón y
+     pintarlo fuera rompería la fidelidad y el censo de 1440 px. */
+  .accessibility button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+  @media (max-width:700px){
+    .accessibility{padding:0 17px}
+  }
+
+  /* ===== 9. La tarjeta muestra su marca sin tocar nada (paso 13) ===== */
+  /* Con ratón la marca llega con la tarjeta y la revelan :hover o el foco. Sin
+     ratón no hay estado que la revele, así que está siempre, y el toque
+     conserva un solo significado: abrir el portal.
+
+     Las cinco declaraciones hacen falta las cinco. La regla de escritorio pone
+     opacity:0 con scale(.85) y fundido, de modo que hay que anular las tres
+     cosas; y mix-blend-mode:screen sobre la tarjeta blanca de reposo no tiene
+     nada que aclarar, así que a cualquier opacidad la máscara seguiría
+     invisible. El camino correcto ya está inventado en esta misma hoja, en
+     .fav-otro: la máscara es dibujo blanco sobre transparente, invert(1) la
+     vuelve negra sin tocar el alfa, y multiply la imprime sobre el blanco.
+
+     No se declara display: body.high-contrast .p-marca{display:none} tiene
+     menos especificidad y va antes en el archivo, y solo sigue ganando porque
+     nadie le discute esa propiedad. Así el alto contraste conserva la tarjeta
+     limpia sin tocar nada. */
+  .casilla .portal .p-marca{
+    opacity:min(.26,var(--op,.17) * .9);
+    transform:none;
+    transition:none;
+    mix-blend-mode:multiply;
+    filter:invert(1) blur(var(--tenue,0px));
+  }
+  /* Obligatorio, no cosmético: el #77728d de reposo da 4,59 a 1 sobre blanco y
+     solo aguanta un fondo hasta #fdfdfd, así que cualquier marca visible debajo
+     de la descripción la baja de 4,5 a 1. Y se ve debajo: en teléfono la
+     tarjeta mide 104 px y la máscara ocupa su banda central, justo donde cae la
+     descripción. Con var(--purple) el peor punto queda en 4,81 a 1. El nombre
+     (#3a2e96, 5,56 a 1) y el dominio (#4934ae, 4,69 a 1) no necesitan cambio. */
+  .casilla .portal .p-desc{color:var(--purple)}
+  /* Tableta táctil con teclado acoplado: la tarjeta enfocada pasa a violeta en
+     cualquier medio, y sobre violeta la máscara invertida con multiply pinta un
+     borrón. Ahí vuelve la receta de escritorio. Gana por especificidad, 4
+     contra 3, sin depender del orden. */
+  .casilla .portal:focus-visible .p-marca{
+    mix-blend-mode:screen;
+    filter:blur(var(--tenue,0px));
+    opacity:min(1,var(--op,.17) * 4.2);
+  }
+
+  /* ===== 10. Mapa táctil: Barras contadas (paso 14) ===== */
+  /* La pestaña Mapa nombra dos figuras: la rosa con ratón y las barras contadas
+     sin ratón. Aquí se peina la segunda. La rosa no se toca.
+
+     Todo objetivo es una fila de ancho completo, 326 por 76 px cerrada y 326
+     por 56 px abierta; el gesto es siempre un toque con un solo significado y
+     nada queda escondido detrás de un gesto, porque el nombre, el dominio y el
+     conteo van impresos. Los cuadros son marcas y no mandos.
+
+     El panel hereda todo de .mapa, que es la otra clase del mismo elemento:
+     misma especificidad, gana por ir después en el archivo. */
+  .mapa-barras{padding:14px;--cuadro:18px;--hueco:5px}
+
+  /* Banda de cabecera: ocupa el sitio del disco del centro de la rosa y dice lo
+     mismo que decía él. */
+  .barras-banda{min-height:64px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--borde);margin-bottom:12px}
+  .banda-cuenta{margin:0;display:grid;grid-template-columns:minmax(0,1fr);min-width:0}
+  .banda-num{font-size:34px;font-weight:900;color:var(--deep);line-height:.85;letter-spacing:-.05em}
+  .banda-linea{font-size:13px;color:var(--violeta)}
+  .banda-sub{font-size:11px;font-weight:700;color:var(--violeta)}
+  .barras-leyenda{margin:0;font-size:11px;font-weight:700;color:var(--violeta);text-align:right;align-self:end}
+  .barras-leyenda span{color:#4938c9}
+
+  /* El nav etiquetado no hereda el reparto de la banda. */
+  .barras-lienzo{display:block}
+  /* Sin este reset el relleno por omisión del ul mete 40 px de sangría y las
+     cinco barras quedan corridas. Está medido. */
+  .barras-lista{list-style:none;margin:0;padding:0}
+
+  /* .mapa-barra y no .barra, que ya es la tira apilada de la tarjeta de cifras.
+     El filete entre barras es lo que hace que las cinco se lean como un solo
+     gráfico de cinco barras y no como cinco tarjetas sueltas. */
+  .mapa-barra{border-radius:12px;min-width:0}
+  /* El filete se conserva y el aire se reparte a los dos lados: entre la cabecera
+     de una barra y la de la siguiente quedan 11 px, que es lo que pide el aire
+     mínimo de 8. Con el filete solo, las cinco cabeceras quedaban a 1,0 px y el
+     censo contaba cuatro pares pegados, uno por cada par de barras seguidas. */
+  .mapa-barra + .mapa-barra{border-top:1px solid var(--borde);margin-top:5px;padding-top:5px}
+  .mapa-barra.is-fijo{background:var(--nube);border-radius:12px}
+
+  /* El h3 con su margen por omisión separaba las barras y aportaba alto que no
+     es tocable. Está medido: 18,72 px arriba y abajo. */
+  .barra-titulo{margin:0;font-size:inherit;font-weight:inherit}
+
+  /* EL ÚNICO MANDO DE LA FIGURA, y el objetivo tocable de 326 por 76: el alto
+     es alto real del botón y no relleno de un hijo, y ni un pseudoelemento ni
+     un hermano posterior se pintan encima, que es lo que crea bandas muertas. */
+  .barra-cabecera{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    min-height:76px;
+    background:none;
+    border:0;
+    border-radius:12px;
+    padding:8px 10px;
+    text-align:left;
+    color:var(--violeta);
+  }
+  /* El contorno se dibuja sobre la propia barra: con el offset global de 3 px lo
+     recortaría el panel. */
+  .barra-cabecera:focus-visible{outline-offset:-3px}
+  /* Con el tema abierto el renglón del título se queda pegado arriba. El
+     destino del salto ya lo fijan html{scroll-padding-top} y .tema, así que
+     aquí no se suma una tercera capa. */
+  .mapa-barra.is-fijo .barra-cabecera{position:sticky;top:0;background:#fff;z-index:1}
+
+  /* Renglón 1: disco del número, nombre y conteo. */
+  .barra-renglon{display:flex;align-items:center;gap:var(--aire-seguro);min-width:0}
+  .barra-cabecera .mapa-num{width:24px;height:24px;font-size:11px}
+  .barra-nombre{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--violeta);flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* El nombre completo lo da el nombre accesible del botón, así que el recorte
+     visual no esconde información y no hace falta title, que además no se
+     muestra al tocar. */
+  /* Las tres ramas de .cab-cuenta se reusan verbatim y solo cambia la escala.
+     Los dos nombres de clase le ganan a la regla del @container mapa que la baja
+     a 11 px: las consultas de contenedor no suman especificidad. */
+  .barra-renglon .cab-cuenta{font-size:16px;font-weight:900;color:var(--tinta)}
+
+  /* Renglón 2: la escalera de cuadros, uno por portal. El relleno de la
+     izquierda los alinea bajo el disco del número, 24 del disco más 10 de
+     hueco. Si un tema pasa de los cuadros que caben, la tira envuelve y la
+     barra gana alto: no se encoge nada. */
+  .barra-tira{display:flex;flex-wrap:wrap;gap:var(--hueco);margin-top:var(--aire-seguro);min-height:var(--cuadro);padding-left:34px}
+
+  /* La marca de un portal. Las tres capas de sombra van en variables porque
+     box-shadow no se acumula entre reglas: un cuadro claro, favorito y
+     coincidente necesita las tres a la vez y en la misma declaración.
+     El barrido de izquierda a derecha sale del --n que emite el componente,
+     topado en 8, así que el tope de 320 ms sale solo. */
+  .barra-cuadro{
+    width:var(--cuadro);
+    height:var(--cuadro);
+    border-radius:5px;
+    flex:none;
+    pointer-events:none;
+    --anillo:0 0 0 0 #0000;
+    --aro:0 0 0 0 #0000;
+    --halo:0 0 0 0 #0000;
+    box-shadow:var(--anillo),var(--aro),var(--halo);
+    transition:background .2s;
+    transition-delay:calc(var(--n,0) * 40ms);
+  }
+  .barra-cuadro--solido{background:var(--c)}
+  /* El anillo interior es lo que distingue el cuadro claro del fondo también en
+     alto contraste y para quien no distinga los violetas. */
+  .barra-cuadro--claro{background:var(--lila);--anillo:inset 0 0 0 1.5px #4938c9}
+  /* El punto-anillo de la rosa trasladado a un cuadro. */
+  .barra-cuadro--fav{--aro:0 0 0 2px #fff,0 0 0 4px var(--c)}
+  /* Mismo nombre y mismo significado que .punto.is-coincide en la rosa. */
+  .barra-cuadro.is-coincide{--halo:0 0 0 2px var(--realce)}
+  .barra-cuadro--fav.is-coincide{--halo:0 0 0 6px var(--realce)}
+  /* CRITERIO DE CIERRE MEDIDO: el cuadro apagado se apaga cambiando el relleno
+     y NUNCA bajando la opacidad. Es la lección de los logos de las tarjetas,
+     donde 14 de 15 cayeron por debajo de 3 a 1 al apagar con opacidad. El
+     relleno calculado tiene que salir rgb(236,231,255) con opacidad 1. */
+  .barra-cuadro.is-apagado{background:var(--banda);box-shadow:none;opacity:1}
+
+  /* El cuerpo de la barra abierta. Se oculta con [hidden], que la hoja ya
+     vuelve display:none!important, y por eso el censo de objetivos no cuenta
+     las filas de los temas cerrados. */
+  .barra-cuerpo{background:var(--nube);border-radius:0 0 12px 12px;padding:0 10px 10px}
+  /* La descripción del tema, que con ratón solo se ve en la ficha del centro al
+     señalar. Recibe el foco al abrir, así que lleva contorno propio: la regla
+     global de foco solo cubre a, button, input y summary. */
+  .barra-desc{font-size:13px;color:var(--purple);margin:0 0 8px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .barra-desc:focus-visible{outline:3px solid #f7be37;outline-offset:2px}
+
+  .barra-filas{list-style:none;margin:0;padding:0}
+  /* Sin alto fijo: si el nombre envuelve, la fila crece. */
+  .barra-fila-item{min-height:56px}
+  .barra-fila-item + .barra-fila-item{border-top:1px solid #ece7ff}
+  /* Aquí SÍ es opacidad, a diferencia de los cuadros: la fila apagada lleva
+     además [inert], así que no es objetivo tocable, ni la recorren las flechas,
+     ni entra en el censo, y no hay que medirle contraste. */
+  .barra-fila-item.is-apagado{opacity:.3}
+
+  /* El enlace del portal, objetivo de 326 por 56. El área que responde es esta
+     caja y nada más. */
+  .barra-fila{display:grid;grid-template-columns:var(--cuadro) minmax(0,1fr) auto;align-items:center;gap:var(--aire-seguro);min-height:56px;padding:0 8px;border-radius:9px;color:var(--tinta)}
+  /* Por lo mismo que la cabecera. Nada de esta figura vive dentro de una tira
+     con desplazamiento horizontal, así que no puede pasar lo del índice pegado. */
+  .barra-fila:focus-visible{outline-offset:-3px}
+  /* El cuadro de la fila es el MISMO cuadro de la tira, mismo tamaño y mismo
+     relleno, para que marca y nombre se lean como un solo objeto. */
+  .barra-cuadro--fila{align-self:center}
+  .barra-fila-texto{display:grid;min-width:0}
+  .barra-fila-nombre{font-size:15px;font-weight:900;color:var(--tinta);overflow-wrap:anywhere}
+  /* La regla que ya existe es .mapa-fila .estrella y está acotada a la fila de
+     la rosa. */
+  .barra-fila .estrella{color:#4938c9;font-size:13px}
+  /* La señal de confianza de a dónde se va la persona, impresa y no escondida
+     detrás de un gesto. */
+  .barra-fila-dominio{font-size:11px;font-weight:700;color:var(--violeta)}
+  .barra-fila b{font-weight:400;font-size:16px;color:var(--flecha)}
+
+  /* La segunda salida al pie de la barra abierta: con nueve portales el
+     recorrido ya pide volver arriba. Es objetivo tocable y entra en el censo,
+     así que los 44 px no son negociables. */
+  .barra-salida{width:100%;min-height:var(--toque);margin-top:8px;background:#fff;border:1px solid var(--borde);border-radius:10px;color:var(--violeta);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+
+  /* Tableta. El umbral se expresa con @container mapa y no con media query,
+     porque el contenedor sí ve el zoom de body que usan A+ y A− y matchMedia
+     no. El relleno del panel es la excepción: un elemento no puede responder a
+     su propia consulta de contenedor, así que ese va por ancho. */
+  @container mapa (min-width:600px){
+    .barras-lienzo{--cuadro:22px}
+    .barra-cabecera{min-height:84px}
+    /* Dos columnas: es lo que baja Patrimonio abierto de 1.044 a unos 884 px. */
+    .barra-filas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}
+    .barra-fila-item{border-top:1px solid #ece7ff}
+    .barra-fila-item + .barra-fila-item{border-top:1px solid #ece7ff}
+    .barra-fila-item:nth-child(-n+2){border-top:0}
+  }
+  @media (min-width:701px){
+    .mapa-barras{padding:20px}
+  }
+
+  /* ===== 11. Vista Lista: cada fila lleva su propia caja ===== */
+  /* Con ratón la lista es una tarjeta blanca con filetes dentro y así se queda:
+     el cursor apunta a un punto y dos filas seguidas no se confunden. Con el dedo
+     no se sostiene. El censo de las tres vistas midió 20 pares de filas vecinas a
+     0,0 px de aire, en los cuatro tamaños y en los dos zooms, donde el criterio
+     pide 8. Un toque un poco alto abre el portal de la fila de arriba.
+
+     POR QUÉ LA CAJA PASA DE LA LISTA A LA FILA. Meter el aire dejando la tarjeta
+     donde estaba no sirve: el hueco quedaría blanco sobre blanco y la separación
+     no se leería, así que el dedo seguiría sin ver dónde acaba una fila. En táctil
+     el ul deja de ser tarjeta y cada fila es la suya, con su borde y su radio. Es
+     el mismo reparto que ya tiene el mosaico apilado.
+
+     Esto se midió tarde porque el censo solo recorría la vista que carga. Ahora
+     recorre las tres, que es lo que lo encontró. */
+  .lista ul{display:grid;gap:var(--aire-seguro);background:none;border:0;border-radius:0}
+  .fila{background:#fff;border:1px solid var(--line);border-radius:14px}
+  /* El filete de arriba lo pinta ahora el borde de la propia fila, y el de la
+     regla de escritorio llega con color de filete interior. Misma especificidad
+     que esa regla, así que gana por ir después. */
+  .lista li + li .fila{border-top-color:var(--line)}
+  /* Los tres radios de la tarjeta única sobran: cada fila lleva el radio entero. */
+  .lista li:first-child .fila,
+  .lista li:last-child .fila,
+  .lista li:only-child .fila{border-radius:14px}
+
+  /* ===== 12. Menos movimiento y alto contraste ===== */
+  @media (prefers-reduced-motion:reduce){
+    /* El barrido se apaga y todos los cuadros encienden a la vez. La cuenta del
+       número ya la apaga el componente por menosMovimiento(). */
+    .barra-cuadro{transition:none;transition-delay:0s}
+    .mapa-barra,.barra-cabecera{transition:none}
+  }
+  /* En la línea de body.high-contrast .conmutador y .ficha, para que el borde de
+     la barra inferior y de los botones de accesibilidad siga visible. */
+  body.high-contrast .zocalo,body.high-contrast .zocalo-vistas{background:#fff;border:2px solid var(--line)}
+  /* La lista ya no es una tarjeta sino tantas como filas, así que el borde grueso
+     de alto contraste se muda con ella: en el ul dibujaría un marco alrededor de
+     filas que ya tienen el suyo. */
+  body.high-contrast .lista ul{background:none;border:0}
+  body.high-contrast .fila{background:#fff;border:2px solid var(--line)}
+  body.high-contrast .accessibility button{border:2px solid var(--line)}
+}

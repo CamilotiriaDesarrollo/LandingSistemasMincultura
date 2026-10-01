@@ -1,0 +1,26 @@
+[
+  {
+    "clave": "A",
+    "criterio": "1024x768 con has_touch: pestana Mapa existe, 44 px de alto, pinta Barras contadas",
+    "pasa": true,
+    "medido": "hover:hover=False; pestana existe=True, visible=True, 81.7x44 px, aria-pressed=true; #mapa-barras visible=True (976 px de ancho), barras=5, cuadros=25, reparto=[4, 9, 6, 4, 2], conteos impresos=['4 portales', '9 portales', '6 portales', '4 portales', '2 portales']; alto de barra cerrada=[84, 84, 84, 84, 84] px, centro que devuelve su boton=5 de 5; #mapa (rosa) visible=False"
+  },
+  {
+    "clave": "B",
+    "criterio": "1440x900 con raton: pinta la rosa con lienzo de 440 px y geometria-rosa.ts intacto",
+    "pasa": true,
+    "medido": "hover:hover=True; pestana visible=True (31 px de alto); .rosa=440x516 px (--ancho-centro=440px, --alto=516px); barras visibles=False; grupos svg=35, filas de nombre=25; geometria-rosa.ts intacto=True (sha256 16c06ada666ff2eb, 9413 bytes, mtime 2026-09-29 18:03; testigos del nucleo hasta 2026-09-29 18:03; primer archivo del plan 2026-09-30 16:52)"
+  },
+  {
+    "clave": "D",
+    "criterio": "La marca de agua se ve sin tocar nada en las tarjetas que tienen archivo",
+    "pasa": true,
+    "medido": "tarjetas con .p-marca y archivo=15 de 25 portales; con opacidad > 0 sin interaccion=15; opacidades distintas=[0.118, 0.123, 0.146, 0.171, 0.189, 0.236, 0.25, 0.26]; con caja 0x0=0; en alto contraste quedan visibles=0 de 15; ejemplo: Abrir Museo Nacional de Colombia en una pestañ opacidad=0.26 92x72 px transform=none"
+  },
+  {
+    "clave": "C",
+    "criterio": "Un toque en una tarjeta abre exactamente 1 pestana, sin doble significado ni temporizador",
+    "pasa": true,
+    "medido": "objetivo='Abrir Museo Nacional de Colombia en una pestaña nueva' en (28,333) 162x141 px; pestanas antes=1, tras el toque=2 (https://www.museonacional.gov.co/Paginas/default), tras 2,5 s mas=2 (delta=1); grep de mosaico.ts sin apanos=True (encontrado: nada); clases de estado tras el toque=0; estado antes={'url': '', 'abiertas': 0} y despues={'url': '', 'abiertas': 0} (sin doble significado); arrastre desde la tarjeta y suelta fuera: 2 -> 2 pestanas; target=_blank, rel=noopener noreferrer, href=https://www.museonacional.gov.co/"
+  }
+]

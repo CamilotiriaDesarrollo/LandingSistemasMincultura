@@ -1,0 +1,30 @@
+<div class="wrap top">
+  <a href="#inicio" aria-label="Culturas, volver al inicio">
+    <img class="official-logo" src="/logo-culturas.png" alt="Culturas">
+  </a>
+  <span class="ministry">Ministerio de las Culturas,<br>las Artes y los Saberes</span>
+  <div class="header-actions">
+    <span>Portales y sistemas de información</span>
+    <button class="header-search" type="button" (click)="irABuscar()">Buscar ⌕</button>
+  </div>
+  <button class="mobile-nav" type="button" (click)="irAExplorar()">Explorar ↓</button>
+</div>
+<nav class="nav" aria-label="Navegación">
+  <div class="wrap">
+    <!-- Los cinco enlaces que salen del sitio llevan las tres cosas que pide el
+         proyecto: rótulo accesible, pestaña nueva y rel que corta el acceso a la
+         página de origen. El sexto apunta a #explorar, que es de esta misma
+         página, y por eso no lleva ninguna de las tres: abrirla en otra pestaña
+         sería salirse del sitio sin motivo. La distinción la decide el propio
+         href en esExterno, no una bandera escrita a mano. -->
+    @for (enlace of enlaces; track enlace.texto) {
+      <a
+        [href]="enlace.url"
+        [attr.aria-label]="esExterno(enlace.url) ? enlace.texto : null"
+        [attr.target]="esExterno(enlace.url) ? '_blank' : null"
+        [attr.rel]="esExterno(enlace.url) ? 'noopener noreferrer' : null"
+        >{{ enlace.texto }}</a
+      >
+    }
+  </div>
+</nav>

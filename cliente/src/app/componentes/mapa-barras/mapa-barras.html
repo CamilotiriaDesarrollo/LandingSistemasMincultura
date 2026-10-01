@@ -1,0 +1,144 @@
+<!-- Banda de cabecera: ocupa el sitio del disco del centro de la rosa y dice lo mismo.
+     El número, la línea y el sub son los del centro, sin cambiar una palabra. -->
+<div class="barras-banda">
+  <p class="banda-cuenta">
+    <strong class="banda-num">{{ numeroMostrado() }}</strong>
+    <span class="banda-linea">{{ lineaBanda() }}</span>
+    @if (subBanda()) {
+      <span class="banda-sub">{{ subBanda() }}</span>
+    }
+  </p>
+  <p class="barras-leyenda">
+    <span aria-hidden="true">★</span> Favorito · Cada cuadro es un portal
+  </p>
+</div>
+
+<!-- La figura: una lista de revelación. Cada barra es un botón de ancho completo con
+     aria-expanded y aria-controls, nunca aria-pressed. Las otras barras siguen a la vista
+     cuando una se abre, así que la repartición completa no se pierde. -->
+<nav class="barras-lienzo" aria-label="Portales por tema">
+  <ul class="barras-lista">
+    @for (b of barras(); track b.t.id) {
+      <!-- .mapa-barra y no .barra: .barra ya es la tira apilada de la tarjeta de cifras.
+           Es el mismo prefijo que llevan .mapa-fila, .mapa-fila-item y .mapa-num. -->
+      <li class="mapa-barra" [class.is-fijo]="abierta(b.t.id)" [attr.data-tema]="b.t.id">
+        <h3 class="barra-titulo">
+          <!-- El área que responde es la caja real del botón: ni un pseudoelemento ni un
+               hermano posterior se pintan encima, así que no hay banda muerta que robe el
+               toque en el centro de la barra. -->
+          <button
+            type="button"
+            class="barra-cabecera"
+            [id]="'barra-cab-' + b.t.id"
+            [attr.data-tema]="b.t.id"
+            [attr.aria-expanded]="abierta(b.t.id)"
+            [attr.aria-controls]="'barra-cuerpo-' + b.t.id"
+            [attr.aria-describedby]="'t-desc-' + b.t.id"
+            (click)="alternarBarra(b)"
+          >
+            <span class="barra-renglon">
+              <span
+                class="mapa-num"
+                [class.mapa-num--solido]="b.solido"
+                [class.mapa-num--claro]="!b.solido"
+                [style.--c]="b.color"
+                aria-hidden="true"
+                >{{ b.t.numero }}</span
+              >
+              <span class="barra-nombre">{{ b.t.name }}</span>
+              <!-- Las tres ramas del conteo son las del mapa de hoy, reusadas tal cual. -->
+              <span class="cab-cuenta" data-cuenta>
+                @if (!store.hayConsultaMarca()) {
+                  {{ plural(b.t.total, 'portal', 'portales') }}
+                } @else if (b.t.coincidencias) {
+                  {{ b.t.coincidencias }} de {{ b.t.total }}
+                } @else {
+                  <span class="sin">Sin coincidencias</span><span>0 de {{ b.t.total }}</span>
+                }
+              </span>
+            </span>
+            <!-- La tira de cuadros: un cuadro por portal. Son marcas y no mandos, de ahí el
+                 aria-hidden. La búsqueda las apaga cambiando el relleno, nunca la opacidad. -->
+            <span class="barra-tira" aria-hidden="true">
+              @for (f of b.filas; track f.i) {
+                <span
+                  class="barra-cuadro"
+                  [class.barra-cuadro--solido]="b.solido"
+                  [class.barra-cuadro--claro]="!b.solido"
+                  [class.barra-cuadro--fav]="f.p.favorito"
+                  [class.is-coincide]="coincide(f.p)"
+                  [class.is-apagado]="apagado(f.p)"
+                  [style.--c]="b.color"
+                  [style.--n]="f.retraso"
+                ></span>
+              }
+            </span>
+          </button>
+        </h3>
+
+        <!-- La barra abierta crece en su sitio. El cuerpo se oculta con [hidden] y no con
+             @if: aria-controls tiene que apuntar a un nodo que exista. -->
+        <div class="barra-cuerpo" [id]="'barra-cuerpo-' + b.t.id" [hidden]="!abierta(b.t.id)">
+          <p class="barra-desc" tabindex="-1" [attr.data-tema]="b.t.id">{{ b.t.desc }}</p>
+          <ul class="barra-filas">
+            @for (f of b.filas; track f.i) {
+              <!-- El inert es obligatorio: las flechas filtran por [inert], y ocultar la fila
+                   o quitarla del @for perdería el mapa fijo, que es el punto de la vista. -->
+              <li
+                class="barra-fila-item"
+                [class.is-apagado]="apagado(f.p)"
+                [attr.inert]="apagado(f.p) ? '' : null"
+                [attr.data-i]="f.i"
+              >
+                <a
+                  class="barra-fila"
+                  [attr.data-i]="f.i"
+                  [href]="f.p.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="'Abrir ' + f.p.name + ' en una pestaña nueva'"
+                  [attr.aria-describedby]="'m-desc-' + f.i"
+                >
+                  <span
+                    class="barra-cuadro barra-cuadro--fila"
+                    [class.barra-cuadro--solido]="b.solido"
+                    [class.barra-cuadro--claro]="!b.solido"
+                    [class.barra-cuadro--fav]="f.p.favorito"
+                    [class.is-coincide]="coincide(f.p)"
+                    [class.is-apagado]="apagado(f.p)"
+                    [style.--c]="b.color"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="barra-fila-texto">
+                    <strong class="barra-fila-nombre">
+                      @if (f.p.favorito) {
+                        <span class="estrella" aria-hidden="true">★</span>
+                      }
+                      <span
+                        app-resaltado
+                        [texto]="f.p.name"
+                        [consulta]="store.consultaMarca()"
+                      ></span>
+                    </strong>
+                    <span class="barra-fila-dominio">{{ f.p.dominio }}</span>
+                  </span>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              </li>
+            }
+          </ul>
+          <!-- La segunda salida: con nueve portales el recorrido ya pide volver arriba. -->
+          <button
+            type="button"
+            class="barra-salida"
+            [attr.data-tema]="b.t.id"
+            [attr.aria-label]="'Cerrar ' + b.t.name"
+            (click)="cerrarBarra(b)"
+          >
+            Cerrar tema
+          </button>
+        </div>
+      </li>
+    }
+  </ul>
+</nav>

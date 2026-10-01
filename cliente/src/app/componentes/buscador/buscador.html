@@ -1,0 +1,19 @@
+<!-- id="query": lo busca el enlace del encabezado y es el destino del atajo Ctrl K. -->
+<label class="search"><span class="lens" aria-hidden="true"></span><input #campo type="search" id="query"
+    aria-label="Buscar portal" aria-keyshortcuts="Control+K Meta+K" autocomplete="off"
+    [placeholder]="textoBuscador()" [value]="store.consulta()"
+    (input)="alEscribir(campo.value)" (keydown)="alTeclearCampo($event)"><kbd class="tecla" id="tecla"
+    aria-hidden="true">{{ tecla() }}</kbd></label>
+
+<div class="rapidas" id="rapidas" [hidden]="!fichas().length">
+  <span class="eyebrow" id="rapidas-titulo">BÚSQUEDAS RÁPIDAS</span>
+  <!-- role="toolbar" con una sola parada de Tab: el estado vive en aria-pressed, que es
+       lo que el CSS lee para pintar el fondo y poner la ✕. -->
+  <div class="fichas" id="fichas" role="toolbar" aria-labelledby="rapidas-titulo" (keydown)="alTeclearFichas($event)">
+    @for (t of fichas(); track t; let i = $index) {
+      <button #ficha type="button" class="ficha" [attr.data-termino]="t"
+              [attr.tabindex]="i === focoFicha() ? 0 : -1" [attr.aria-pressed]="pulsada(t)"
+              (click)="alPulsarFicha(t, i)">{{ t }}</button>
+    }
+  </div>
+</div>

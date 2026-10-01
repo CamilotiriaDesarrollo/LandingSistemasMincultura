@@ -1,0 +1,196 @@
+{
+  "categories": [
+    {
+      "id": "informacion",
+      "name": "Información y registros",
+      "short": "Datos y registros",
+      "desc": "Consulta datos culturales y actualiza registros del sector.",
+      "color": "#4236c6"
+    },
+    {
+      "id": "patrimonio",
+      "name": "Patrimonio y espacios",
+      "short": "Patrimonio",
+      "desc": "Museos, archivos, memorias y lugares para explorar.",
+      "color": "#6132ae"
+    },
+    {
+      "id": "creacion",
+      "name": "Convocatorias y creación",
+      "short": "Crear y participar",
+      "desc": "Apoyos, formación, música y circulación cultural.",
+      "color": "#5035c0"
+    },
+    {
+      "id": "lectura",
+      "name": "Lectura e infancias",
+      "short": "Leer y aprender",
+      "desc": "Libros, lenguas y contenidos para la primera infancia.",
+      "color": "#7229ae"
+    },
+    {
+      "id": "servicios",
+      "name": "Trámites y atención",
+      "short": "Servicios",
+      "desc": "Gestiones para espectáculos y solicitudes ciudadanas.",
+      "color": "#392a9d"
+    }
+  ],
+  "portals": [
+    {
+      "name": "SINIC",
+      "desc": "Datos, inversión, agentes y espacios del sector cultural.",
+      "url": "https://www.sinic.gov.co/",
+      "category": "informacion"
+    },
+    {
+      "name": "SIPA Público",
+      "desc": "Consulta y apropiación del patrimonio cultural.",
+      "url": "https://sipapublico.mincultura.gov.co/",
+      "category": "informacion"
+    },
+    {
+      "name": "Soy Cultura",
+      "desc": "Registro nacional de creadores y gestores culturales.",
+      "url": "https://soycultura.mincultura.gov.co/",
+      "category": "informacion"
+    },
+    {
+      "name": "SIREC",
+      "desc": "Información y registro del sector cinematográfico.",
+      "url": "https://www.sirec.gov.co/",
+      "category": "informacion"
+    },
+    {
+      "name": "Museo Nacional de Colombia",
+      "desc": "Colecciones, exposiciones e historia del país.",
+      "url": "https://www.museonacional.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Museo Colonial y Santa Clara",
+      "desc": "Arte e historia colonial en dos espacios museales.",
+      "url": "https://www.museocolonial.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Casa Museo Quinta de Bolívar",
+      "desc": "Historia y vida cotidiana de la Independencia.",
+      "url": "https://www.quintadebolivar.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Museo de la Independencia",
+      "desc": "La Casa del Florero y las memorias de 1810.",
+      "url": "https://www.museoindependencia.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Fragmentos",
+      "desc": "Espacio de arte, memoria y creación.",
+      "url": "https://fragmentos.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Archivo General de la Nación",
+      "desc": "Memoria documental y archivos de Colombia.",
+      "url": "https://www.archivogeneral.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "ICANH",
+      "desc": "Antropología, historia y patrimonio arqueológico.",
+      "url": "https://www.icanh.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Gastroherencia Colombia",
+      "desc": "Cocinas, historias e identidades del país.",
+      "url": "https://gastroherencia.mincultura.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "Centro Nacional de las Artes",
+      "desc": "Programación, creación y encuentro en el Delia Zapata Olivella.",
+      "url": "https://eneldelia.gov.co/",
+      "category": "patrimonio"
+    },
+    {
+      "name": "CoCrea",
+      "desc": "Financiación para proyectos culturales y creativos.",
+      "url": "https://cocrea.com.co/",
+      "category": "creacion"
+    },
+    {
+      "name": "Artes para la Paz",
+      "desc": "Formación artística y cultural en los territorios.",
+      "url": "https://artesparalapaz.mincultura.gov.co/",
+      "category": "creacion"
+    },
+    {
+      "name": "Concertación Cultural",
+      "desc": "Apoyos para proyectos culturales comunitarios.",
+      "url": "https://concertacion.mincultura.gov.co/",
+      "category": "creacion"
+    },
+    {
+      "name": "Estímulos",
+      "desc": "Becas, premios y oportunidades para la creación.",
+      "url": "https://estimulos.mincultura.gov.co/",
+      "category": "creacion"
+    },
+    {
+      "name": "Reading Colombia",
+      "desc": "Cofinanciación para traducir obras colombianas.",
+      "url": "https://readingcolombia.mincultura.gov.co/",
+      "category": "creacion"
+    },
+    {
+      "name": "Celebra la Música",
+      "desc": "Encuentro y circulación de músicas en el territorio.",
+      "url": "https://celebralamusica.mincultura.gov.co/Paginas/Celebra2024/index.aspx",
+      "category": "creacion"
+    },
+    {
+      "name": "Biblioteca Nacional de Colombia",
+      "desc": "Patrimonio bibliográfico y recursos de lectura.",
+      "url": "https://www.bibliotecanacional.gov.co/es-co",
+      "category": "lectura"
+    },
+    {
+      "name": "Instituto Caro y Cuervo",
+      "desc": "Lenguas, literatura, investigación y formación.",
+      "url": "https://www.caroycuervo.gov.co/",
+      "category": "lectura"
+    },
+    {
+      "name": "Maguaré",
+      "desc": "Cuentos, música y juegos para la primera infancia.",
+      "url": "https://maguare.gov.co/",
+      "category": "lectura"
+    },
+    {
+      "name": "MaguaRED",
+      "desc": "Ideas y contenidos para acompañar la primera infancia.",
+      "url": "https://maguared.gov.co/",
+      "category": "lectura"
+    },
+    {
+      "name": "PULEP",
+      "desc": "Gestiones para espectáculos públicos de artes escénicas.",
+      "url": "https://pulep.mincultura.gov.co/",
+      "category": "servicios"
+    },
+    {
+      "name": "PQRSD",
+      "desc": "Presenta y consulta solicitudes ciudadanas.",
+      "url": "https://gestiondocumental.etb.net.co/Instancias/MinCultura_Prod/PQRSD/Publica/",
+      "category": "servicios"
+    }
+  ],
+  "favorites": [
+    "SINIC",
+    "Estímulos",
+    "Soy Cultura"
+  ]
+}

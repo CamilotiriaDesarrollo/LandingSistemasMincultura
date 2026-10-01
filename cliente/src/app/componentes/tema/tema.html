@@ -1,0 +1,63 @@
+<div class="tema-cabeza">
+  <span
+    class="tema-num"
+    [appNumero]="cuentaAhora()"
+    [style.--peso]="peso()"
+    aria-hidden="true"
+  ></span>
+  <div class="tema-textos">
+    <!-- El nombre accesible empieza por el texto visible (WCAG 2.5.3) y la acción va
+         después, solo para lectores. Los dos nombres están siempre en el DOM: el CSS
+         conmuta cuál se ve según el tema sea lomo o no. -->
+    <h3 [id]="'h-' + tema().id" tabindex="-1">
+      <button
+        type="button"
+        class="tema-boton"
+        [attr.aria-expanded]="ariaExpanded()"
+        [attr.aria-controls]="ariaControls()"
+        (click)="pulsarTitulo.emit()"
+      ><span class="nombre-largo">{{ tema().name }}</span><span class="nombre-corto">{{ tema().short }}</span><span class="solo-lector tema-cuenta">{{ textoCuenta() }}</span><span class="solo-lector tema-accion">{{ textoAccion() }}</span></button>
+    </h3>
+    <p class="tema-desc">{{ tema().desc }}</p>
+    <span class="tema-pista" aria-hidden="true">Ver solo este tema +</span>
+  </div>
+  <button type="button" class="volver" (click)="pulsarVolver.emit()">Volver al mosaico</button>
+</div>
+
+<ul class="celdas" [id]="'celdas-' + tema().id">
+  @for (p of tema().portales; track clave(p)) {
+    <li
+      class="casilla"
+      [hidden]="!p.coincide"
+      [class.apagada]="apagada(p)"
+      [attr.inert]="apagada(p) ? '' : null"
+      [class.ancha]="esAncha(p)"
+      [style.--vt]="'portal-' + clave(p)"
+      [style.grid-column]="spanDe(p)"
+    >
+      <a
+        [appMarca]="p.name"
+        class="portal"
+        [href]="p.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        [attr.aria-label]="'Abrir ' + p.name + ' en una pestaña nueva'"
+        [attr.aria-describedby]="describedby(p)"
+      >
+        <strong><span app-resaltado class="p-nombre" [texto]="p.name" [consulta]="store.consultaMarca()"></span>@if (p.favorito) {&ngsp;<span class="p-fav" [id]="'f-' + clave(p)">FAVORITO</span>}</strong>
+        <span
+          app-resaltado
+          class="p-desc"
+          [id]="'d-' + clave(p)"
+          [texto]="p.desc"
+          [consulta]="store.consultaMarca()"
+        ></span>
+        <span class="p-dominio" [id]="'m-' + clave(p)">@for (parte of trozosDominio(p); track $index) {@if (!$first) {.<wbr>}{{ parte }}}</span>
+        <b aria-hidden="true">↗</b>
+      </a>
+    </li>
+  }
+  @for (c of cierres(); track $index) {
+    <li class="cierre" aria-hidden="true">{{ c }}</li>
+  }
+</ul>

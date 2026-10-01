@@ -1,0 +1,61 @@
+<div app-buscador class="buscador" id="buscador"></div>
+
+<div class="section-head">
+  <div>
+    <span class="eyebrow">TODOS LOS PORTALES</span>
+    <h2 #titulo id="explorar-titulo" tabindex="-1">{{ cabeza()[0] }}</h2>
+    <p id="explorar-ayuda">{{ cabeza()[1] }}</p>
+  </div>
+  <div class="control">
+    <div class="conmutador" role="group" aria-label="Forma de ver los portales">
+      @for (v of VISTAS; track v) {
+        <button
+          type="button"
+          [attr.data-vista]="v"
+          [attr.aria-pressed]="v === store.vistaEfectiva()"
+          (click)="store.cambiarVista(v)"
+        >
+          <i [class]="'icono icono-' + v" aria-hidden="true"></i>{{ ETIQUETAS[v] }}
+        </button>
+      }
+    </div>
+    <p class="conteo" id="conteo">{{ cargando() ? '' : store.textoConteo() }}</p>
+  </div>
+</div>
+
+<nav
+  app-indice
+  class="indice"
+  id="indice"
+  aria-label="Temas del directorio"
+  [hidden]="!verIndice()"
+></nav>
+
+<div
+  app-mosaico
+  class="mosaico"
+  id="mosaico"
+  [attr.data-modo]="store.disposicion().modo"
+  [hidden]="!store.hayResultados() || store.vistaEfectiva() !== 'mosaico'"
+></div>
+
+<!-- La pestaña Mapa nombra dos figuras y solo se pinta una: la rosa cuando hay puntero fino,
+     Barras contadas cuando no lo hay. El umbral es la existencia de puntero y no el ancho de
+     pantalla, así que una tableta táctil de 1024 px recibe las barras y no una rosa cuyo
+     nivel de portal es inalcanzable con el dedo. Las dos viven siempre en el DOM y se ocultan
+     con [hidden]: el bloque #mapa-descripciones de la rosa es el destino de los
+     aria-describedby de las dos figuras. -->
+<div app-mapa class="mapa" id="mapa" [hidden]="!verMapaRosa()"></div>
+
+<div app-mapa-barras class="mapa mapa-barras" id="mapa-barras" [hidden]="!verMapaBarras()"></div>
+
+<div
+  app-lista
+  class="lista"
+  id="lista"
+  [hidden]="!store.hayResultados() || store.vistaEfectiva() !== 'lista'"
+></div>
+
+<div app-vacio class="vacio" id="vacio" [hidden]="store.hayResultados() || cargando()"></div>
+
+<div #anuncio class="solo-lector" id="anuncio" aria-live="polite"></div>

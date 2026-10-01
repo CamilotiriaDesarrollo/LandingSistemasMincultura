@@ -1,0 +1,12 @@
+@for (x of bloques(); track x.t.id) {
+  <section
+    app-tema
+    [hidden]="!x.b"
+    [appTemaVisible]="x.t.id"
+    [bloque]="x.b"
+    [modo]="store.disposicion().modo"
+    [tema]="x.t"
+    (pulsarTitulo)="alPulsarTitulo(x.t.id)"
+    (pulsarVolver)="alPulsarTitulo(x.t.id)"
+  ></section>
+}

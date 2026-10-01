@@ -1,0 +1,5 @@
+/* app-root no debe crear una caja: así el encabezado, el main y el pie quedan
+   como hijos directos del body, igual que en el prototipo. */
+:host {
+  display: contents;
+}

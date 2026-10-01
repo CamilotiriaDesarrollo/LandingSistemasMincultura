@@ -1,0 +1,8 @@
+# Texto normalizado a LF dentro del repositorio, y lo que corresponda al clonar.
+* text=auto
+
+# Binarios: que git no toque sus bytes.
+*.png binary
+*.ico binary
+*.woff2 binary
+*.pdf binary
