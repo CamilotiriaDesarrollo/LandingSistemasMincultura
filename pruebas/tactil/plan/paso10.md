@@ -10,7 +10,7 @@ Guardar el tamaño de letra y el contraste y aplicarlos al arrancar, con el mism
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\app\componentes\accesibilidad\accesibilidad.ts`
+- `cliente\src\app\componentes\accesibilidad\accesibilidad.ts`
 
 
 ## Cómo se revisa (esto cierra el paso)

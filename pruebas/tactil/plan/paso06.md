@@ -10,9 +10,9 @@ Subir la letra del campo de búsqueda a 16 px en el bloque de móvil y compensar
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\styles.css`
+- `cliente\src\styles.css`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\index.html`
+- `cliente\src\index.html`
 
 
 ## Cómo se revisa (esto cierra el paso)

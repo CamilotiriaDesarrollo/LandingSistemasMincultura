@@ -10,11 +10,11 @@ Registrar en GUIA.md los componentes nuevos y su carpeta, la existencia del bloq
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\GUIA.md`
+- `GUIA.md`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\README.md`
+- `README.md`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\LEEME.md`
+- `pruebas\tactil\LEEME.md`
 
 
 ## Cómo se revisa (esto cierra el paso)

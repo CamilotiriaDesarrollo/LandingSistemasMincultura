@@ -1037,7 +1037,7 @@
   }
  },
  "viewport": {
-  "archivo": "C:/Users/camil/Desktop/IA Raiz Proyectos/001 Trabajo Diario/003 Minisiterio Varios/08 Portal Landing Sistemas info/landing-portales/cliente/src/index.html",
+  "archivo": "cliente/src/index.html",
   "existe": true,
   "contenido_archivo": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
   "contenido_servido": "width=device-width, initial-scale=1",

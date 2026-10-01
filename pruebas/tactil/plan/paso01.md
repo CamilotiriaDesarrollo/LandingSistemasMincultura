@@ -10,19 +10,19 @@ Crear los guiones de medición reutilizables, fuera de cliente, y congelar la l�
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\auditoria.py`
+- `pruebas\tactil\auditoria.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\censo_objetivos.py`
+- `pruebas\tactil\censo_objetivos.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\hit_test.py`
+- `pruebas\tactil\hit_test.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\solapes.py`
+- `pruebas\tactil\solapes.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\reflow.py`
+- `pruebas\tactil\reflow.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\linea-base.json`
+- `pruebas\tactil\linea-base.json`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\LEEME.md`
+- `pruebas\tactil\LEEME.md`
 
 
 ## Cómo se revisa (esto cierra el paso)

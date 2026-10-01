@@ -10,13 +10,13 @@ Componente nuevo con selector de atributo, por ejemplo div[app-mapa-barras], her
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\app\componentes\mapa-barras\mapa-barras.ts`
+- `cliente\src\app\componentes\mapa-barras\mapa-barras.ts`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\app\componentes\mapa-barras\mapa-barras.html`
+- `cliente\src\app\componentes\mapa-barras\mapa-barras.html`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\app\componentes\explorador\explorador.html`
+- `cliente\src\app\componentes\explorador\explorador.html`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\styles.css`
+- `cliente\src\styles.css`
 
 
 ## Cómo se revisa (esto cierra el paso)

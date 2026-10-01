@@ -10,9 +10,9 @@ Retirar el apaño de pointerdown de mosaico.ts, es decir alTocarCasilla y la con
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\app\componentes\mosaico\mosaico.ts`
+- `cliente\src\app\componentes\mosaico\mosaico.ts`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\styles.css`
+- `cliente\src\styles.css`
 
 
 ## Cómo se revisa (esto cierra el paso)

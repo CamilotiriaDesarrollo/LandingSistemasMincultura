@@ -10,7 +10,7 @@ Subir a 44 px de alto real y 8 px de hueco, solo cuando el puntero es grueso: lo
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\cliente\src\styles.css`
+- `cliente\src\styles.css`
 
 
 ## Cómo se revisa (esto cierra el paso)

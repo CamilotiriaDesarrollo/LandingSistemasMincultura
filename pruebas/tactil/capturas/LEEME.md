@@ -51,3 +51,9 @@ Es también la razón de que las cuatro de `antes/` salgan de escritorio: se tom
 con `full_page=True` antes de saber esto. No se vuelven a tomar porque el código
 de entonces ya no está, y en sustancia siguen siendo correctas, porque antes del
 plan un teléfono recibía exactamente esa versión.
+
+Dos cosas más sobre `antes/`, para que nadie se pregunte. Llevan en una esquina un
+círculo oscuro: era una barra de anotación que se usaba en desarrollo para señalar
+cambios sobre la página, y que ya no forma parte del proyecto. Las de `despues/` no
+la llevan. Y no hay versión de `antes/` por vista, porque antes del plan la pestaña
+Mapa no existía por debajo de 1.100 px.

@@ -10,9 +10,9 @@ Correr el banco completo contra la versión terminada, en 390x844, 430x932, 768x
 
 ## Archivos
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\auditoria.py`
+- `pruebas\tactil\auditoria.py`
 
-- `C:\Users\camil\Desktop\IA Raiz Proyectos\001 Trabajo Diario\003 Minisiterio Varios\08 Portal Landing Sistemas info\landing-portales\pruebas\tactil\cierre.json`
+- `pruebas\tactil\cierre.json`
 
 
 ## Cómo se revisa (esto cierra el paso)
